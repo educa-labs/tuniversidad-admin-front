@@ -7,20 +7,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AlertDirective } from './_directives/alert/alert.directive';
 
 const rutasApp: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: '',
-        redirectTo: '/login',
-        pathMatch: 'full'
-    }
+    { path: 'users', component: UsuariosComponent }
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
-        UsuariosComponent
+        UsuariosComponent,
+        AlertDirective
     ],
     imports: [
         BrowserModule,
