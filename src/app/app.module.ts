@@ -9,16 +9,20 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { DetalleUsuarioComponent } from './detalle-usuario/detalle-usuario.component';
 // Importar guards
 import { AuthGuard } from './_guards/index';
 // Importar services
-import { AuthService } from './_services/index';
+import { AuthService, DataUsuariosService } from './_services/index';
 // Importar angular material
-import { MdMenuModule, MdIconModule, MdToolbarModule } from '@angular/material';
+import { MdMenuModule, MdIconModule, MdToolbarModule, 
+    MdInputModule, MdButtonModule, MdCardModule, MdTableModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
 
 const rutasApp: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'users', component: UsuariosComponent, canActivate: [AuthGuard] },
+    { path: 'users/:id', component: DetalleUsuarioComponent },
     // Error 404 lleva home
     { path: '**', redirectTo: '/users' }
 ];
@@ -27,7 +31,8 @@ const rutasApp: Routes = [
     declarations: [
         AppComponent,
         LoginComponent,
-        UsuariosComponent
+        UsuariosComponent,
+        DetalleUsuarioComponent
     ],
     imports: [
         BrowserModule,
@@ -36,13 +41,19 @@ const rutasApp: Routes = [
         HttpModule,
         MdMenuModule, 
         MdToolbarModule,
+        MdCardModule,
+        MdTableModule,
+        MdButtonModule,
+        MdInputModule,
         MdIconModule,
         BrowserAnimationsModule,
+        CdkTableModule,
         RouterModule.forRoot(rutasApp)
     ],
     providers: [
         AuthGuard,
-        AuthService
+        AuthService,
+        DataUsuariosService
     ],
     bootstrap: [AppComponent]
 })
