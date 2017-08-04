@@ -1,17 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
+
+declare interface TableData {
+    headerRow: string[];
+    dataRows: string[][];
+}
 
 @Component({
     selector: 'app-usuarios',
     templateUrl: './usuarios.component.html',
     styleUrls: ['./usuarios.component.css']
 })
+
 export class UsuariosComponent {
 
-    usuarios: any;
+    public tableData1: TableData;
 
-    constructor(private http: Http) {
+    usuarios: any;
+    columnas_mostradas = ['Id', 'Email', 'Rut', 'Token'];
+    datos_usuarios: any;
+
+    constructor(private http: Http, private router: Router) {
         this.recibir_usuarios();      
     }
 
@@ -24,8 +35,11 @@ export class UsuariosComponent {
             .map(res => res.json())
             .subscribe(data => {
                 this.usuarios = data;
-                console.log(data);
             });
     }
 
+    onSelect(id) {
+        console.log('Se apretó: ',id);
+        this.router.navigate(['/users', id]);
+    }
 }
