@@ -1,28 +1,23 @@
-<md-toolbar color="primary">
-  <span>Custom Toolbar</span>
-
-  <md-toolbar-row>
-    <span>Second Line</span>
-    <span class="example-spacer"></span>
-    <md-icon class="example-icon">verified_user</md-icon>
-  </md-toolbar-row>
-
-  <md-toolbar-row>
-    <span>Third Line</span>
-    <span class="example-spacer"></span>
-    <md-icon class="example-icon">favorite</md-icon>
-    <md-icon class="example-icon">delete</md-icon>
-  </md-toolbar-row>
+<md-toolbar color="primary" flex>
+    <span>Tuniversidad - Admin</span>
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+  <span>Educalabs</span>
 </md-toolbar>
 
-<h1>Login works!</h1>
-<label >Email</label>
-<input type="text" class="form-control" [(ngModel)]="credenciales.email" />
-
-<label >Password</label>
-<input type="password" class="form-control"  [(ngModel)]="credenciales.password" />
-
-<button (click)='login()'>Iniciar sesión</button>
-
-<br>
-{{ data_recibida }}
+<div class="contenido-login">
+    <md-card class="tarjeta-login">    
+        <md-card-content>
+            <!-- Input del email -->
+            <md-input-container class="input-login">
+                <input mdInput placeholder="Email" [(ngModel)]='credenciales.email'>
+            </md-input-container>
+            <!-- Input de la contraseña -->
+            <md-input-container class="input-login">
+                <input type="password" mdInput placeholder="Contraseña" [(ngModel)]='credenciales.password'>
+            </md-input-container>
+            <!-- Boton para iniciar sesión -->
+            <br><button class="boton-login" color="primary" md-raised-button (click)='login()'>Iniciar sesión</button>
+        </md-card-content>
+    </md-card>
+</div>
