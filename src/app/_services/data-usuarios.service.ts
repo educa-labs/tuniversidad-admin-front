@@ -10,8 +10,32 @@ export class DataUsuariosService {
 
     data_detalles: any;
     api: string = 'http://localhost:5000';
+    // Información de todos los usuarios
+    informacion_usuarios: any;
 
     constructor(private http: Http) { }
+
+    recibir_usuarios(token) {
+        /* recibir_usuarios: funcion para recibir la información de todos los usuarios
+        si ya estaba cargada, muestra esa información y no la carga de nuevo. */
+        if (this.informacion_usuarios) {
+            return Promise.resolve(this.informacion_usuarios);
+        }
+
+        let headers = new Headers();
+        headers.append('token', token);
+        headers.append('Content-Type','application/json');
+
+        return new Promise(resolve => {
+            // Hacer GET a la API
+            this.http.get('http://localhost:5000/get_users', {headers: headers})
+                .map(res => res.json())
+                .subscribe(data => {
+                    this.informacion_usuarios = data;
+                    resolve(this.informacion_usuarios);
+                });
+        })
+    }
 
     detalle_usuario(id, token) {
         /* detalle_usuario: funcion para consultar toda la información

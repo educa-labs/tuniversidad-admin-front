@@ -1,10 +1,12 @@
+<h1> Cantidad de usuarios con Rut: {{ cantidad_usuarios }} </h1>
+
 <table class="table table-striped">
     <thead>
         <tr><th *ngFor="let cell of columnas_mostradas">{{ cell }}</th></tr>
     </thead>
     <tbody>
         <tr *ngFor="let row of usuarios">
-            <td *ngFor="let cell of row" (click)="onSelect(row[0])">{{cell}}</td>
+            <td *ngFor="let cell of row" (click)="seleccionar_usuario(row[0])">{{ cell }}</td>
         </tr>
     </tbody>
 </table>
