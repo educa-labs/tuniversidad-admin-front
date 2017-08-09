@@ -1,2 +1,5 @@
 <h1>Detalle Usuario Works</h1>
-<p> {{ data_recibida }} </p>
+<p>Detalles usuario: </p>
+<p>{{ informacion_usuario }}</p>
+<p>Metas usuario:</p>
+<ul><li *ngFor='let meta of metas_usuario'>{{ meta }}</li></ul>

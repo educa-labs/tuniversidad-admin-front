@@ -32,3 +32,32 @@
 .mat-table {
   overflow: auto;
 }
+
+.tarjeta-usuarios {
+    width: 100%;
+    height: 100%;
+}
+
+.columna-ensayos {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .contenido-desktop {
+        display: none;
+    }
+
+    .contenido-mobile {
+        padding: 10px 40px 10px 40px;
+    }
+}
+
+@media (min-width: 992px) {
+    .contenido-desktop {
+        padding: 10px 40px 10px 40px;
+    }
+
+    .contenido-mobile {
+        display: none;
+    }
+}

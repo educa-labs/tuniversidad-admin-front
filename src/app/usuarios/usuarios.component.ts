@@ -18,12 +18,21 @@ declare interface TableData {
 
 export class UsuariosComponent implements OnInit {
 
+    // Tablas para mostrar información
     public tableData1: TableData;
-
-    usuarios: any;
     columnas_mostradas = ['Id', 'Email', 'Rut', 'Token'];
-    datos_usuarios: any;
-    cantidad_usuarios: number;
+    // Usuarios con Rut
+    cantidad_usuarios_con_rut: number;
+    usuarios_con_rut: any;
+    // Usuarios sin Rut
+    usuarios_sin_rut: any;
+    cantidad_usuarios_sin_rut: number;
+    // Usuarios con metas
+    cantidad_usuarios_con_metas: number;
+    promedio_metas_por_usuarios: number;
+    // Usuarios con ensayos
+    cantidad_usuarios_con_ensayos: number;
+    promedio_ensayos_por_usuario: number;
 
     constructor(
         private http: Http, 
@@ -43,8 +52,18 @@ export class UsuariosComponent implements OnInit {
 
         this.data.recibir_usuarios(token)
             .then(data => {
-                this.usuarios = data;
-                this.cantidad_usuarios = data.length;
+                // Guardar los usuarios con RUT
+                this.usuarios_con_rut = data[0][0];
+                this.cantidad_usuarios_con_rut = data[0][0].length;
+                // Guardar usuarios sin Rut
+                this.usuarios_sin_rut = data[0][1];
+                this.cantidad_usuarios_sin_rut  = data[0][1].length;
+                // Guardar la cantidad de usuarios con metas
+                this.cantidad_usuarios_con_metas = data[1][0];
+                this.promedio_metas_por_usuarios = data[1][1];
+                // Guardar la cantidad de usuarios con ensayos
+                this.cantidad_usuarios_con_ensayos = data[2][0];
+                this.promedio_ensayos_por_usuario = data[2][1];
             })
     }
 

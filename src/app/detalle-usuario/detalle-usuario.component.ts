@@ -16,6 +16,9 @@ export class DetalleUsuarioComponent implements OnInit {
 
     id_seleccionado: any;
     data_recibida: any;
+    // Informacion del usuario
+    informacion_usuario: any;
+    metas_usuario: any;
 
     constructor(
         private route: ActivatedRoute,
@@ -42,6 +45,10 @@ export class DetalleUsuarioComponent implements OnInit {
                 // Guardar toda la información del usuarios
                 this.data_recibida = data;
                 console.log('Data recibida: ', this.data_recibida);
+                // Guardar la informacion del usuario
+                this.informacion_usuario = data[0];
+                // Guardar las metas del usuario
+                this.metas_usuario = data[1];
             })
     }
 }

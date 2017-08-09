@@ -16,7 +16,8 @@ import { AuthGuard } from './_guards/index';
 import { AuthService, DataUsuariosService } from './_services/index';
 // Importar angular material
 import { MdMenuModule, MdIconModule, MdToolbarModule, 
-    MdInputModule, MdButtonModule, MdCardModule, MdTableModule } from '@angular/material';
+    MdInputModule, MdButtonModule, MdCardModule, MdTableModule, MdListModule,
+    MdGridListModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
 const rutasApp: Routes = [
@@ -44,6 +45,8 @@ const rutasApp: Routes = [
         MdCardModule,
         MdTableModule,
         MdButtonModule,
+        MdGridListModule,
+        MdListModule,
         MdInputModule,
         MdIconModule,
         BrowserAnimationsModule,
