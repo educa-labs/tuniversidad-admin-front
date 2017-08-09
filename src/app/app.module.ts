@@ -8,8 +8,8 @@ import { FormsModule } from '@angular/forms';
 // Importar componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { DetalleUsuarioComponent } from './detalle-usuario/detalle-usuario.component';
+import { UsuariosComponent, DialogUsuarios } from './usuarios/usuarios.component';
+import { DetalleUsuarioComponent, DialogDetalleUsuarios } from './detalle-usuario/detalle-usuario.component';
 import { UniversidadesComponent } from './universidades/universidades.component';
 // Importar guards
 import { AuthGuard } from './_guards/index';
@@ -18,7 +18,7 @@ import { AuthService, DataUsuariosService } from './_services/index';
 // Importar angular material
 import { MdMenuModule, MdIconModule, MdToolbarModule, 
     MdInputModule, MdButtonModule, MdCardModule, MdTableModule, MdListModule,
-    MdGridListModule, MdSidenavModule, MdTabsModule } from '@angular/material';
+    MdGridListModule, MdSidenavModule, MdTabsModule, MdDialogModule, MdProgressSpinnerModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
 const rutasApp: Routes = [
@@ -36,7 +36,9 @@ const rutasApp: Routes = [
         LoginComponent,
         UsuariosComponent,
         DetalleUsuarioComponent,
-        UniversidadesComponent
+        UniversidadesComponent,
+        DialogUsuarios,
+        DialogDetalleUsuarios
     ],
     imports: [
         BrowserModule,
@@ -46,6 +48,8 @@ const rutasApp: Routes = [
         MdMenuModule, 
         MdToolbarModule,
         MdTabsModule,
+        MdDialogModule,
+        MdProgressSpinnerModule,
         MdCardModule,
         MdSidenavModule,
         MdTableModule,
@@ -63,7 +67,11 @@ const rutasApp: Routes = [
         AuthService,
         DataUsuariosService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [
+        DialogUsuarios, 
+        DialogDetalleUsuarios
+    ]
 })
 
 export class AppModule { }

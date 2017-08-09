@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import { MdDialog } from '@angular/material';
 // Importar providers
 import { DataUsuariosService } from '../_services/index';
 
@@ -23,7 +24,8 @@ export class DetalleUsuarioComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private data: DataUsuariosService) { }
+        private data: DataUsuariosService,
+        public dialog: MdDialog) { }
 
     ngOnInit() {
         /* ngOnInit: Funcion que para cuándo se ingresa a la vista busque
@@ -40,6 +42,8 @@ export class DetalleUsuarioComponent implements OnInit {
     consultar_informacion(id) {
         /* consultar_informacion: recibe un id y token. Llama a la función del
         service data y guarda lo recibido */
+        let loader =  this.dialog.open(DialogDetalleUsuarios, {disableClose: true});
+
         this.data.detalle_usuario(id, 'fqH6AyiyhQMeqKM8MjMC')
             .then(data => {
                 // Guardar toda la información del usuarios
@@ -49,6 +53,14 @@ export class DetalleUsuarioComponent implements OnInit {
                 this.informacion_usuario = data[0];
                 // Guardar las metas del usuario
                 this.metas_usuario = data[1];
+                // Desaparece loader
+                loader.close();
             })
     }
 }
+
+@Component({
+  selector: 'dialog-usuarios',
+  template: '<md-spinner></md-spinner>',
+})
+export class DialogDetalleUsuarios {}

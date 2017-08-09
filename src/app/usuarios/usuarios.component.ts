@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
+import { MdDialog } from '@angular/material';
 // Importar providers
 import { DataUsuariosService } from '../_services/index';
 
@@ -41,7 +42,8 @@ export class UsuariosComponent implements OnInit {
     constructor(
         private http: Http, 
         private router: Router, 
-        public data: DataUsuariosService) {}
+        public data: DataUsuariosService,
+        public dialog: MdDialog) {}
 
     ngOnInit() {
         /* ngOnInit: funcion que se ejecuta cada vez que se inicia el componente
@@ -52,6 +54,8 @@ export class UsuariosComponent implements OnInit {
     public recibir_usuarios() {
         /* recibir_usuarios: funcion para recibir la información de todos los usuarios para la 
         tabla. Usa la funcion del provider que retorna un valor según lo guardado. */
+        
+        let loader = this.dialog.open(DialogUsuarios, {disableClose: true});
         let token = 'fqH6AyiyhQMeqKM8MjMC';
 
         this.data.recibir_usuarios(token)
@@ -71,6 +75,8 @@ export class UsuariosComponent implements OnInit {
                 // Guardar la informacion de la region mas repetida
                 this.region_mas_repetida = data[3][0];
                 this.cantidad_usuarios_region = data[3][1];
+                 
+                 loader.close();
             })
     }
 
@@ -81,3 +87,9 @@ export class UsuariosComponent implements OnInit {
         this.router.navigate(['/users', id]);
     }
 }
+
+@Component({
+  selector: 'dialog-usuarios',
+  templateUrl: 'dialog-usuarios.html',
+})
+export class DialogUsuarios {}
