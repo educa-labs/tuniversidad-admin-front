@@ -20,7 +20,8 @@ export class UsuariosComponent implements OnInit {
 
     // Tablas para mostrar información
     public tableData1: TableData;
-    columnas_mostradas = ['Id', 'Email', 'Rut', 'Token'];
+    columnas_tabla_1 = ['Id', 'Email', 'Rut', 'Ciudad'];
+    columnas_tabla_2 = ['Id', 'Email', 'Última sesión', 'Creado'];
     // Usuarios con Rut
     cantidad_usuarios_con_rut: number;
     usuarios_con_rut: any;
@@ -33,6 +34,9 @@ export class UsuariosComponent implements OnInit {
     // Usuarios con ensayos
     cantidad_usuarios_con_ensayos: number;
     promedio_ensayos_por_usuario: number;
+    // Regiones
+    region_mas_repetida: string;
+    cantidad_usuarios_region: number;
 
     constructor(
         private http: Http, 
@@ -64,6 +68,9 @@ export class UsuariosComponent implements OnInit {
                 // Guardar la cantidad de usuarios con ensayos
                 this.cantidad_usuarios_con_ensayos = data[2][0];
                 this.promedio_ensayos_por_usuario = data[2][1];
+                // Guardar la informacion de la region mas repetida
+                this.region_mas_repetida = data[3][0];
+                this.cantidad_usuarios_region = data[3][1];
             })
     }
 

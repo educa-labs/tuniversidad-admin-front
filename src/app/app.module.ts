@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DetalleUsuarioComponent } from './detalle-usuario/detalle-usuario.component';
+import { UniversidadesComponent } from './universidades/universidades.component';
 // Importar guards
 import { AuthGuard } from './_guards/index';
 // Importar services
@@ -17,13 +18,14 @@ import { AuthService, DataUsuariosService } from './_services/index';
 // Importar angular material
 import { MdMenuModule, MdIconModule, MdToolbarModule, 
     MdInputModule, MdButtonModule, MdCardModule, MdTableModule, MdListModule,
-    MdGridListModule } from '@angular/material';
+    MdGridListModule, MdSidenavModule, MdTabsModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
 const rutasApp: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'users', component: UsuariosComponent, canActivate: [AuthGuard] },
     { path: 'users/:id', component: DetalleUsuarioComponent },
+    { path: 'universidades', component: UniversidadesComponent, canActivate: [AuthGuard] },
     // Error 404 lleva home
     { path: '**', redirectTo: '/users' }
 ];
@@ -33,7 +35,8 @@ const rutasApp: Routes = [
         AppComponent,
         LoginComponent,
         UsuariosComponent,
-        DetalleUsuarioComponent
+        DetalleUsuarioComponent,
+        UniversidadesComponent
     ],
     imports: [
         BrowserModule,
@@ -42,7 +45,9 @@ const rutasApp: Routes = [
         HttpModule,
         MdMenuModule, 
         MdToolbarModule,
+        MdTabsModule,
         MdCardModule,
+        MdSidenavModule,
         MdTableModule,
         MdButtonModule,
         MdGridListModule,

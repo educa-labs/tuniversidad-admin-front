@@ -1,3 +1,15 @@
-.example-fill-remaining-space {
+.llenar-espacio {
     flex: 1 1 auto;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav-principal {
+  padding: 20px;
+  width: 300px;
 }

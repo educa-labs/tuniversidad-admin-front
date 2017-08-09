@@ -8,6 +8,7 @@
 </div>
 
 <div  class="contenido-desktop">
+<!-- Empiezan las tarjetas con información general -->
     <div style="width: 100%; text-align: center;">
         <div style="display:inline-block; width: 45%; padding: 10px 5px 5px 20px">
             <md-card>
@@ -15,7 +16,7 @@
                 <md-card-content>
                     <md-list>
                         <md-list-item>Usuarios con Rut: {{ cantidad_usuarios_con_rut }}</md-list-item>
-                        <md-list-item>Usuarios sin Rut: {{ cantidad_usuarios_sin_rut }}</md-list-item>
+                        <md-list-item>Usuarios totales: {{ cantidad_usuarios_sin_rut + cantidad_usuarios_con_rut }}</md-list-item>
                     </md-list>
                 </md-card-content>
             </md-card>
@@ -49,24 +50,53 @@
 
         <div style="display:inline-block;  width: 45%; padding: 10px 5px 5px 20px">
             <md-card>
-                <md-card-title>Metas</md-card-title>
-                <md-card-content>Usuarios con metas: {{ cantidad_usuarios_con_metas }}</md-card-content>
+                <md-card-title>Regiones</md-card-title>
+                <md-card-content>
+                    <md-list>
+                        <md-list-item>Región más repetida: {{ region_mas_repetida }}</md-list-item>
+                        <md-list-item>Usuarios en esa región: {{ cantidad_usuarios_region }}</md-list-item>
+                    </md-list>
+                </md-card-content>
             </md-card>
         </div>
     </div>
+<!-- Terminan las tarjetas con información general -->
 
-    <md-card class='tarjeta-usuarios'>
-        <md-card-content>
-            <table class="table table-striped">
-                <thead>
-                    <tr><th *ngFor="let cell of columnas_mostradas">{{ cell }}</th></tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let row of usuarios_con_rut">
-                        <td *ngFor="let cell of row" (click)="seleccionar_usuario(row[0])">{{ cell }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </md-card-content>
-    </md-card>
+<!-- Empieza el espacio con información de los usuarios -->
+    <md-tab-group>
+        <md-tab label="Con Rut">
+            <md-card class='tarjeta-usuarios'>
+                <md-card-content>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th *ngFor="let cell of columnas_tabla_1">{{ cell }}</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of usuarios_con_rut">
+                                <td *ngFor="let cell of row" (click)="seleccionar_usuario(row[0])">{{ cell }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-card-content>
+            </md-card>
+        </md-tab>
+
+        <md-tab label="Sin Rut">
+            <md-card class='tarjeta-usuarios'>
+                <md-card-content>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th *ngFor="let cell of columnas_tabla_2">{{ cell }}</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of usuarios_sin_rut">
+                                <td *ngFor="let cell of row" (click)="seleccionar_usuario(row[0])">{{ cell }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-card-content>
+            </md-card>
+        </md-tab>
+    </md-tab-group>
+
 </div>
