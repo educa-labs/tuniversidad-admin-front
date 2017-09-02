@@ -1,18 +1,52 @@
-<!--
-  Generated template for the UsuariosPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>usuarios</ion-title>
-  </ion-navbar>
-
+    <ion-navbar color='primary'>
+        <ion-title>Usuarios</ion-title>
+    </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-
+    <ion-grid>
+        <ion-row>
+            <!-- Columna para tarjeta de usuarios -->
+            <ion-col col-6>
+                <ion-card color='tarjeta_1'>
+                    <ion-card-content>
+                        <ion-card-title>Usuarios</ion-card-title>
+                         <p>Con Rut: {{ cantidad_usuarios_con_rut }}</p>
+                         <p>Sin Rut: {{ cantidad_usuarios_sin_rut }}</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <!-- Columna para tarjeta de metas -->
+            <ion-col col-6>
+                <ion-card color='tarjeta_2'>
+                    <ion-card-content>
+                        <ion-card-title>Metas</ion-card-title>
+                         <p>Usuarios con metas: {{ cantidad_usuarios_con_metas }}</p>
+                         <p>Metas por usuario: {{ promedio_metas_por_usuarios }}</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <!-- Columna para tarjeta de Ensayos -->
+            <ion-col col-6>
+                <ion-card color='tarjeta_3'>
+                    <ion-card-content>
+                        <ion-card-title>Ensayos</ion-card-title>
+                         <p>Usuarios con metas: {{ cantidad_usuarios_con_metas }}</p>
+                         <p>Metas por usuario: {{ promedio_metas_por_usuarios }}</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <!-- Columna para tarjeta de region -->
+            <ion-col col-6>
+                <ion-card color='tarjeta_4'>
+                    <ion-card-content>
+                        <ion-card-title>Regiones</ion-card-title>
+                         <p>Mas repetida: {{ region_mas_repetida }}</p>
+                         <p>Usuarios: {{ cantidad_usuarios_region }}</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

@@ -25,7 +25,7 @@ export class LoginPage {
         public auth: AuthProvider) {
 
             // Deshabilitar el menu dentro del login
-            this.menuCtrl.enable(true);
+            this.menuCtrl.enable(false);
     }
 
      public login() {

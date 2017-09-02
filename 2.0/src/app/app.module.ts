@@ -9,15 +9,19 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { UsuariosPage } from '../pages/usuarios/usuarios';
 import { LoginPage } from '../pages/login/login';
+import { UniversidadesPage } from '../pages/universidades/universidades';
 // importar providers
 import { AuthProvider } from '../providers/auth/auth';
+import { DataUsuariosProvider } from '../providers/data-usuarios/data-usuarios';
+import { DataUniversidadesProvider } from '../providers/data-universidades/data-universidades';
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
         UsuariosPage,
-        LoginPage
+        LoginPage,
+        UniversidadesPage
     ],
     imports: [
         BrowserModule,
@@ -29,13 +33,16 @@ import { AuthProvider } from '../providers/auth/auth';
         MyApp,
         HomePage,
         UsuariosPage,
-        LoginPage
+        LoginPage,
+        UniversidadesPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        AuthProvider
+        AuthProvider,
+    DataUsuariosProvider,
+    DataUniversidadesProvider
     ]
 })
 export class AppModule {}
