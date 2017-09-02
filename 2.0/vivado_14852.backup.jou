@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:10 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Sat Sep  2 14:44:32 2017
+# Process ID: 14852
+# Current directory: /home/eavillagran/Escritorio/Educalabs/tuniversidad-admin-front/2.0
+# Command line: vivado
+# Log file: /home/eavillagran/Escritorio/Educalabs/tuniversidad-admin-front/2.0/vivado.log
+# Journal file: /home/eavillagran/Escritorio/Educalabs/tuniversidad-admin-front/2.0/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {/home/eavillagran/Escritorio/UC/IIC2343/2017-2-G08/Entrega 01/entrega_1/entrega_1.xpr}
+update_compile_order -fileset sources_1
+close [ open {/home/eavillagran/Escritorio/UC/IIC2343/2017-2-G08/Entrega 01/entrega_1/entrega_1.srcs/sources_1/new/HA.vhd} w ]
+add_files {{/home/eavillagran/Escritorio/UC/IIC2343/2017-2-G08/Entrega 01/entrega_1/entrega_1.srcs/sources_1/new/HA.vhd}}
+update_compile_order -fileset sources_1
