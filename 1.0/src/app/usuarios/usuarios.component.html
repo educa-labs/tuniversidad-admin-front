@@ -1,0 +1,102 @@
+<div  class="contenido-mobile">
+    <md-card>
+        <md-card-title>Error</md-card-title>
+        <md-card-content>
+            <p>No puedes ver este contenido desde el celular.</p>
+        </md-card-content>
+    </md-card>
+</div>
+
+<div  class="contenido-desktop">
+<!-- Empiezan las tarjetas con información general -->
+    <div style="width: 100%; text-align: center;">
+        <div style="display:inline-block; width: 45%; padding: 10px 5px 5px 20px">
+            <md-card>
+                <md-card-title>Usuarios</md-card-title>
+                <md-card-content>
+                    <md-list>
+                        <md-list-item>Usuarios con Rut: {{ cantidad_usuarios_con_rut }}</md-list-item>
+                        <md-list-item>Usuarios totales: {{ cantidad_usuarios_sin_rut + cantidad_usuarios_con_rut }}</md-list-item>
+                    </md-list>
+                </md-card-content>
+            </md-card>
+        </div>
+
+        <div style="display:inline-block;  width: 45%; padding: 10px 5px 5px 20px">
+            <md-card>
+                <md-card-title>Metas</md-card-title>
+                <md-card-content>
+                    <md-list>
+                        <md-list-item>Usuarios con metas: {{ cantidad_usuarios_con_metas }}</md-list-item>
+                        <md-list-item>Metas por usuario: {{ promedio_metas_por_usuarios }}</md-list-item>
+                    </md-list>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+
+    <div style="width: 100%; text-align: center;">
+        <div style="display:inline-block; width: 45%; padding: 10px 5px 5px 20px">
+            <md-card>
+                <md-card-title>Ensayos</md-card-title>
+                <md-card-content>
+                    <md-list>
+                        <md-list-item>Usuarios con ensayos: {{ cantidad_usuarios_con_ensayos }}</md-list-item>
+                        <md-list-item>Ensayos por usuario: {{ promedio_ensayos_por_usuario }}</md-list-item>
+                    </md-list>
+                </md-card-content>
+            </md-card>
+        </div>
+
+        <div style="display:inline-block;  width: 45%; padding: 10px 5px 5px 20px">
+            <md-card>
+                <md-card-title>Regiones</md-card-title>
+                <md-card-content>
+                    <md-list>
+                        <md-list-item>Región más repetida: {{ region_mas_repetida }}</md-list-item>
+                        <md-list-item>Usuarios en esa región: {{ cantidad_usuarios_region }}</md-list-item>
+                    </md-list>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+<!-- Terminan las tarjetas con información general -->
+
+<!-- Empieza el espacio con información de los usuarios -->
+    <md-tab-group>
+        <md-tab label="Con Rut">
+            <md-card class='tarjeta-usuarios'>
+                <md-card-content>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th *ngFor="let cell of columnas_tabla_1">{{ cell }}</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of usuarios_con_rut">
+                                <td *ngFor="let cell of row" (click)="seleccionar_usuario(row[0])">{{ cell }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-card-content>
+            </md-card>
+        </md-tab>
+
+        <md-tab label="Sin Rut">
+            <md-card class='tarjeta-usuarios'>
+                <md-card-content>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th *ngFor="let cell of columnas_tabla_2">{{ cell }}</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of usuarios_sin_rut">
+                                <td *ngFor="let cell of row" (click)="seleccionar_usuario(row[0])">{{ cell }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-card-content>
+            </md-card>
+        </md-tab>
+    </md-tab-group>
+
+</div>
