@@ -10,6 +10,8 @@ import { HomePage } from '../pages/home/home';
 import { UsuariosPage } from '../pages/usuarios/usuarios';
 import { LoginPage } from '../pages/login/login';
 import { UniversidadesPage } from '../pages/universidades/universidades';
+import { DetalleUniversidadPage } from '../pages/detalle-universidad/detalle-universidad';
+import { DetalleCarreraPage } from '../pages/detalle-carrera/detalle-carrera';
 // importar providers
 import { AuthProvider } from '../providers/auth/auth';
 import { DataUsuariosProvider } from '../providers/data-usuarios/data-usuarios';
@@ -21,7 +23,9 @@ import { DataUniversidadesProvider } from '../providers/data-universidades/data-
         HomePage,
         UsuariosPage,
         LoginPage,
-        UniversidadesPage
+        UniversidadesPage,
+        DetalleUniversidadPage,
+        DetalleCarreraPage
     ],
     imports: [
         BrowserModule,
@@ -34,15 +38,17 @@ import { DataUniversidadesProvider } from '../providers/data-universidades/data-
         HomePage,
         UsuariosPage,
         LoginPage,
-        UniversidadesPage
+        UniversidadesPage,
+        DetalleUniversidadPage,
+        DetalleCarreraPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AuthProvider,
-    DataUsuariosProvider,
-    DataUniversidadesProvider
+        DataUsuariosProvider,
+        DataUniversidadesProvider
     ]
 })
 export class AppModule {}

@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar color='secondary'>
+        <ion-title>Detalle Universidad</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <!-- Empieza la información de la universidad -->
+    <h1 padding>Información de la universidad</h1>
+    
+    <!-- Empiezan las carreras de la universidad -->
+    <h1 padding>Carreras de la universidad</h1>
+    <!-- Usar ion-item para que se vea la linea separatoria -->
+    <ion-item>
+        <!-- Crear una "tabla" grid --> 
+        <ion-grid>
+            <ion-row>
+                <!-- Nombre de la carrera -->
+                <ion-col col-7>
+                    <p class="primer_elemento">Nombre</p>
+                </ion-col>
+                <!-- Area de la carrera -->
+                <ion-col col-3>
+                    <p class="fila">Area</p>
+                </ion-col>
+                <!-- Visitas totales de la carrera -->
+                <ion-col col-2>
+                    <p class="fila">Visitas</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <!-- Lista con las carreras de la universidad -->
+    <ion-list>
+        <ion-item *ngFor="let p of carreras_universidad" (click)='ver_carrera(p[0])'>
+            <ion-grid>
+                <ion-row>
+                    <!-- Nombre de la carrera -->
+                    <ion-col col-7 class='truncado'>
+                        <p class="primer_elemento">{{ p[1] }}</p>
+                    </ion-col>
+                    <!-- Area de la carrera -->
+                    <ion-col col-3 class='truncado'>
+                        <p class="fila">{{ p[2] }}</p>
+                    </ion-col>
+                    <!-- Visitas totales de la carrera -->
+                    <ion-col col-2>
+                        <p class="fila">{{ p[3] }}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
+</ion-content>

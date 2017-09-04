@@ -58,12 +58,10 @@ export class AuthProvider {
                         });
                         // Mostrar loader en pantalla
                         loader.present();
-
-                        console.log('Data recibida => ', data);
-                        // Desaparece loader de pantalla
-                        loader.dismiss();
                         // El observer pasa solo si el usuario ingresado es admin
                         observer.next(data['admin']);
+                        // Desaparece loader de pantalla
+                        loader.dismiss();
                         // Completar observer
                         observer.complete();
                     });

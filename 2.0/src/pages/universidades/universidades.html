@@ -4,7 +4,49 @@
     </ion-navbar>
 </ion-header>
 
+<ion-content>
+    <!-- Usar ion-item para que se vea la linea separatoria -->
+    <ion-item>
+        <!-- Crear una "tabla" grid --> 
+        <ion-grid>
+            <ion-row>
+                <!-- Nombre de la universidad -->
+                <ion-col col-6>
+                    <p class="primer_elemento">Nombre</p>
+                </ion-col>
+                <!-- Sigla de la universidad -->
+                <ion-col col-3>
+                    <p class="fila">Sigla</p>
+                </ion-col>
+                <!-- Visitas de la universidad -->
+                <ion-col col-3>
+                    <p class="fila">Visitas</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
 
-<ion-content padding>
+
+<ion-list>
+        <!-- Elemento: repetir las universidades -->
+        <ion-item *ngFor="let p of universidades" (click)='ver_universidad(p[3])'>
+            <ion-grid>
+                <ion-row>
+                    <!-- Nombre de la universidad -->
+                    <ion-col col-6 class='truncado'>
+                        <p class="primer_elemento">{{ p[0] }}</p>
+                    </ion-col>
+                    <!-- Sigla de la universidad -->
+                    <ion-col col-3 class='truncado'>
+                        <p class="fila">{{ p[1] }}</p>
+                    </ion-col>
+                    <!-- Visitas totales de la universidad -->
+                    <ion-col col-3>
+                        <p class="fila">{{ p[2] }}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
 
 </ion-content>
