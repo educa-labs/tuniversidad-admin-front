@@ -30,7 +30,7 @@ export class DataUsuariosProvider {
             headers.append('token', token);
             headers.append('Content-Type', 'application/json');
             // Hacer get a la API
-            this.http.get(this.api + '/get_users', {headers: headers})
+            this.http.get(this.api + '/users', {headers: headers})
                 .map(res => res.json())
                 .subscribe(data => {
                     // Guardar la informacion recibida
