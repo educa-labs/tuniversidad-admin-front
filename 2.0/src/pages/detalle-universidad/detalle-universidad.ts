@@ -52,4 +52,23 @@ export class DetalleUniversidadPage {
         this.navCtrl.push(DetalleCarreraPage,{id_carrera: id_carrera});
     }
 
+    actualizar_universidad() {
+        /* actualizar_universidad: funcion para actualizar la informacion de una de 
+        lcas universidades. Lo que hace es ordenar la data que se enviará y llama 
+        a la funcion del provider */
+
+        let data_a_enviar = {"university": {
+            "title": this.info_universidad_seleccionada.title,
+            "website": this.info_universidad_seleccionada.website,
+            "motto": this.info_universidad_seleccionada.motto,
+            "initials": this.info_universidad_seleccionada.initials
+        }};
+
+        let token = 'fqH6AyiyhQMeqKM8MjMC';
+
+        this.provider_universidades.actualizar_universidad(data_a_enviar, this.id_universidad_seleccionada, token)
+            .then(data => {
+                console.log('Respuesta al actualizar', data);
+            })
+    }
 }

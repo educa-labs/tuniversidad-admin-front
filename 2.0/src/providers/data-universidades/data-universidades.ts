@@ -31,7 +31,7 @@ export class DataUniversidadesProvider {
             headers.append('token', token);
             headers.append('Content-Type', 'application/json');
             // Hacer get a la api
-            this.http.get(this.api + '/get_universities', {headers: headers})
+            this.http.get(this.api + '/universities', {headers: headers})
                 .map(res => res.json())
                 .subscribe(data => {
                     // Guardar la información de las universidades 
@@ -59,7 +59,7 @@ export class DataUniversidadesProvider {
             headers.append('token', token);
             headers.append('Content-Type', 'application/json');
             // Hacer get a la API 
-            this.http.get(this.api + '/get_detalle_universidad/' + id_universidad, {headers: headers})
+            this.http.get(this.api + '/universities/' + id_universidad, {headers: headers})
                 .map(res => res.json())
                 .subscribe(data => {
                     console.log('Información de la universidad', data);
@@ -69,5 +69,28 @@ export class DataUniversidadesProvider {
                     loader.dismiss();
                 })
         })
+    }
+
+    actualizar_universidad(data_universidad, id_universidad, token) {
+        /* actualizar_universidad: funcion para actualizar la informacion de una universidad
+        lo que hace es recibir un json con toda la información de la universidad y la manda */
+    
+       let loader = this.loading.create({ content: 'Actualizando universidad...' });
+       // Mostrar loader
+       loader.present();
+       return new Promise(resolve => {
+           // Headers para hacer la consulta
+           let headers = new Headers();
+           headers.append('token', token);
+           headers.append('Content-Type', 'application/json');
+           // Hacer patch a la API
+           this.http.patch(this.api + '/universities/' + id_universidad, JSON.stringify(data_universidad), { headers: headers })
+               .map(res => res.json())
+               .subscribe(data => {
+                   console.log('Data recibida al actualizar info', data)
+                   resolve(data);
+                   loader.dismiss();
+               })
+       })
     }
 }

@@ -1,14 +1,41 @@
 <ion-header>
     <ion-navbar color='secondary'>
         <ion-title>Detalle Universidad</ion-title>
+        <!-- Boton para actualizar universidad -->
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon name="checkmark" ></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
-
 
 <ion-content>
     <!-- Empieza la información de la universidad -->
     <h1 padding>Información de la universidad</h1>
-    
+    <!-- Espacio con los inputs para actualizar la universidad -->
+    <ion-list *ngIf='info_universidad_seleccionada'>
+        <!-- Nombre de la universidad -->
+        <ion-item>
+            <ion-label color="primary" stacked>Nombre universidad</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.title"></ion-input>
+        </ion-item>
+        <!-- Pagina web -->
+        <ion-item>
+            <ion-label color="primary" stacked>Pagina web</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.website"></ion-input>
+        </ion-item>
+        <!-- Slogan -->
+        <ion-item>
+            <ion-label color="primary" stacked>Lema</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.motto"></ion-input>
+        </ion-item>
+        <!-- Iniciales -->
+        <ion-item>
+            <ion-label color="primary" stacked>Iniciales</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.initials"></ion-input>
+        </ion-item>
+    </ion-list>
     <!-- Empiezan las carreras de la universidad -->
     <h1 padding>Carreras de la universidad</h1>
     <!-- Usar ion-item para que se vea la linea separatoria -->
