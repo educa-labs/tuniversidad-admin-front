@@ -16,6 +16,7 @@ import { DetalleCarreraPage } from '../pages/detalle-carrera/detalle-carrera';
 import { AuthProvider } from '../providers/auth/auth';
 import { DataUsuariosProvider } from '../providers/data-usuarios/data-usuarios';
 import { DataUniversidadesProvider } from '../providers/data-universidades/data-universidades';
+import { DataCarrerasProvider } from '../providers/data-carreras/data-carreras';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import { DataUniversidadesProvider } from '../providers/data-universidades/data-
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AuthProvider,
         DataUsuariosProvider,
-        DataUniversidadesProvider
+        DataUniversidadesProvider,
+        DataCarrerasProvider
     ]
 })
 export class AppModule {}
