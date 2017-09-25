@@ -87,7 +87,6 @@ export class DataUniversidadesProvider {
            this.http.patch(this.api + '/universities/' + id_universidad, JSON.stringify(data_universidad), { headers: headers })
                .map(res => res.json())
                .subscribe(data => {
-                   console.log('Data recibida al actualizar info', data)
                    resolve(data);
                    loader.dismiss();
                })

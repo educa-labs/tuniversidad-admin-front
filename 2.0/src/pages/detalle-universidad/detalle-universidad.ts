@@ -57,12 +57,14 @@ export class DetalleUniversidadPage {
         lcas universidades. Lo que hace es ordenar la data que se enviará y llama 
         a la funcion del provider */
 
-        let data_a_enviar = {"university": {
+        let data_a_enviar = {
             "title": this.info_universidad_seleccionada.title,
             "website": this.info_universidad_seleccionada.website,
             "motto": this.info_universidad_seleccionada.motto,
             "initials": this.info_universidad_seleccionada.initials
-        }};
+        };
+
+        console.log('Data a enviar', data_a_enviar);
 
         let token = 'fqH6AyiyhQMeqKM8MjMC';
 
