@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 // Importar paginas
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -17,6 +18,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { DataUsuariosProvider } from '../providers/data-usuarios/data-usuarios';
 import { DataUniversidadesProvider } from '../providers/data-universidades/data-universidades';
 import { DataCarrerasProvider } from '../providers/data-carreras/data-carreras';
+import { DataAreasProvider } from '../providers/data-areas/data-areas';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,8 @@ import { DataCarrerasProvider } from '../providers/data-carreras/data-carreras';
     imports: [
         BrowserModule,
         HttpModule,
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp),
+        IonicStorageModule.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -50,7 +53,8 @@ import { DataCarrerasProvider } from '../providers/data-carreras/data-carreras';
         AuthProvider,
         DataUsuariosProvider,
         DataUniversidadesProvider,
-        DataCarrerasProvider
+        DataCarrerasProvider,
+        DataAreasProvider
     ]
 })
 export class AppModule {}
