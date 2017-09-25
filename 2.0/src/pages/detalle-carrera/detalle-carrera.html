@@ -1,11 +1,24 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>detalle-carrera</ion-title>
+        <ion-title>Detalle de carrera</ion-title>
     </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-carrera seleccionada: {{ id_carrera_seleccionada }}
-
+    <div *ngIf='info_carrera'>
+        <!-- Nombre de la carrera -->
+        <h1 padding>Información de: {{ info_carrera.title }}</h1>
+        <!-- Área de la carrera -->
+        <h2 padding>Área de la carrera: {{ info_carrera.area_title }}</h2>
+        <!-- Select con todas las áreas -->
+        <ion-item *ngIf='areas'>
+            <ion-label>Cambiar area</ion-label>
+            <ion-select [(ngModel)]='area_nueva' >
+                <ion-option text-wrap *ngFor="let p of areas" [value]="p.id" >
+                    {{ p.title }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+    </div>
 </ion-content>
