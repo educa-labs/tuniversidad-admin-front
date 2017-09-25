@@ -27,7 +27,7 @@ export class DataCarrerasProvider {
             headers.append('token', token);
             headers.append('Content-Type', 'application/json');
             // Hacer get a la API 
-            this.http.get(this.api + '/careers/' + id_carrera, { headers: headers })
+            this.http.get(this.api + '/carreers/' + id_carrera, { headers: headers })
                 .map(res => res.json())
                 .subscribe(data => {
                     console.log('Informacion de la carrera', data);
@@ -52,7 +52,7 @@ export class DataCarrerasProvider {
             headers.append('token', token);
             headers.append('Content-Type', 'application/json');
             // Hacer Patch a la API
-            this.http.patch(this.api + '/careers/' + id_carrera, JSON.stringify(data_carrera), { headers: headers })
+            this.http.patch(this.api + '/carreers/' + id_carrera, JSON.stringify(data_carrera), { headers: headers })
                 .map(res => res.json())
                 .subscribe(data => {
                     console.log('Data al actualizar info carrera', data);
