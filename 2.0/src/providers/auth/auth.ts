@@ -75,7 +75,7 @@ export class AuthProvider {
     public setUserInfo(value) {
         /* setUserInfo: Funcion para setear información del usuario
         actual */
-        this.usuario_actual = value
+        this.usuario_actual = value;
     }
 
     public get_usuario_actual_info() {
