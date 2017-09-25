@@ -58,6 +58,9 @@ export class AuthProvider {
                         });
                         // Mostrar loader en pantalla
                         loader.present();
+                        // Setear el usuario actual 
+                        this.usuario_actual = new User(0, 'Nombre', 'Email');
+                        console.log('Información recibida en el login', data);
                         // El observer pasa solo si el usuario ingresado es admin
                         observer.next(data['admin']);
                         // Desaparece loader de pantalla
@@ -68,4 +71,16 @@ export class AuthProvider {
             })
         }
     }
+
+    public setUserInfo(value) {
+        /* setUserInfo: Funcion para setear información del usuario
+        actual */
+        this.usuario_actual = value
+    }
+
+    public get_usuario_actual_info() {
+        /* get_usuario_actual_info: funcion para recibir la informacion del usuario actual */
+        return this.usuario_actual
+    }
+
 }

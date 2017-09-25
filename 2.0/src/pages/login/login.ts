@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 // Importar paginas
 import { HomePage } from '../home/home';
 // Import providers
@@ -22,8 +23,20 @@ export class LoginPage {
         public navParams: NavParams,
         public loading: LoadingController,
         public menuCtrl: MenuController,
-        public auth: AuthProvider) {
+        public auth: AuthProvider,
+        public storage: Storage) {
 
+            this.storage.get('user').then((val) => {
+                // Si está 'user' guardado en el storage
+                if (val != null) {
+                    // Setear el usuario actual con el valor que está guardado
+                    this.auth.setUserInfo(val);    
+                    // Convertir la pagina root en la página de inicio
+                    this.nav.setRoot(HomePage);
+                    // Habilitar el menú principal
+                    this.menuCtrl.enable(true);
+                }            
+            });
             // Deshabilitar el menu dentro del login
             this.menuCtrl.enable(false);
     }
@@ -34,6 +47,9 @@ export class LoginPage {
          this.auth.login(this.credenciales)
              .subscribe(allowed => {
                  if (allowed) {
+                     // Setear el usuario actual
+                    this.storage.set('user', this.auth.get_usuario_actual_info());
+                    console.log('Se seteo el usuario', this.storage.get('user'));
                      // Setear la pagina de inicio como root
                      this.nav.setRoot(HomePage);
                      // Habilitar el menu
