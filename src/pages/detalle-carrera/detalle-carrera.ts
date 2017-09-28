@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 // Importar providers
 import { DataCarrerasProvider } from '../../providers/data-carreras/data-carreras';
 import { DataAreasProvider } from '../../providers/data-areas/data-areas';
 
-@IonicPage()
 @Component({
     selector: 'page-detalle-carrera',
     templateUrl: 'detalle-carrera.html',
