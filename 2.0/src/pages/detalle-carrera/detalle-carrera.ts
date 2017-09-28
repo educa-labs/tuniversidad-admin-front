@@ -50,7 +50,8 @@ export class DetalleCarreraPage {
         las carreras. Lo que hace es ordenar la data que se enviará y llama a la
         funcion del provider pasandole la informacion */
 
-        let data_a_enviar = {};
+        let data_a_enviar = {'area_id': this.area_nueva};
+        console.log('Data actualizar carrera', data_a_enviar);
 
         let token = 'fqH6AyiyhQMeqKM8MjMC';
 
