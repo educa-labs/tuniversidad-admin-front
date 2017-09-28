@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 // Importar paginas
 import { DetalleCarreraPage } from '../detalle-carrera/detalle-carrera';
 // Importar providers
 import { DataUniversidadesProvider } from '../../providers/data-universidades/data-universidades';
 
-@IonicPage()
 @Component({
     selector: 'page-detalle-universidad',
     templateUrl: 'detalle-universidad.html',
