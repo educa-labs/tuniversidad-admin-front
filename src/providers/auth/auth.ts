@@ -25,7 +25,7 @@ export class User {
 @Injectable()
 export class AuthProvider {
 
-    api: string = 'http://localhost:5000';
+    api: string = 'http://api.admin.tuniversidad.cl/';
     // Usuario actual
     usuario_actual: User;
     // Información recibida

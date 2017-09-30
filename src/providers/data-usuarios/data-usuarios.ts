@@ -9,7 +9,7 @@ export class DataUsuariosProvider {
     // Informacion de todos los usuarios
     info_todos_los_usuarios: any;
     // Url de la api
-    api: string = 'http://localhost:5000';
+    api: string = 'http://api.admin.tuniversidad.cl/';
 
     constructor(public http: Http, public loading: LoadingController) {}
 

@@ -9,7 +9,7 @@ export class DataCarrerasProvider {
     Tiene todas las funciones necesarias para manejar la info */
 
     // Url de la API
-    api: string = 'http://localhost:5000';
+    api: string = 'http://api.admin.tuniversidad.cl/';
 
     constructor(public http: Http, public loading: LoadingController) {}
 

@@ -9,7 +9,7 @@ export class DataAreasProvider {
     Tiene todas las funciones necesarias para manejar la informacion */
 
     // Url de la API 
-    api: string = 'http://localhost:5000';
+    api: string = 'http://api.admin.tuniversidad.cl/';
     // Areas guardadas
     areas_guardadas: any;
 
