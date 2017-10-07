@@ -10,21 +10,63 @@
     </ion-navbar>
 </ion-header>
 
-
 <ion-content>
     <div *ngIf='info_carrera'>
         <!-- Nombre de la carrera -->
         <h1 padding>Información de: {{ info_carrera.title }}</h1>
         <!-- Área de la carrera -->
         <h2 padding>Área de la carrera: {{ info_carrera.area_title }}</h2>
-        <!-- Select con todas las áreas -->
-        <ion-item *ngIf='areas'>
-            <ion-label>Cambiar area</ion-label>
-            <ion-select [(ngModel)]='area_nueva' >
-                <ion-option text-wrap *ngFor="let p of areas" [value]="p.id" >
-                    {{ p.title }}
-                </ion-option>
-            </ion-select>
-        </ion-item>
+        <!-- Lista con todos los inputs para cambiar la info de la carrera  -->
+        <ion-list>
+            <!-- Select con todas las áreas -->
+            <ion-item *ngIf='areas'>
+                <ion-label>Cambiar area</ion-label>
+                <ion-select [(ngModel)]='info_carrera.area_id' >
+                    <ion-option text-wrap *ngFor="let p of areas" [value]="p.id" >
+                        {{ p.title }}
+                    </ion-option>
+                </ion-select>
+            </ion-item>
+            <!-- Input para cambiar la descripcion de la carrera -->
+            <ion-item>
+                <ion-label floating>Descripción</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.description' [value]="info_carrera.description"></ion-input>
+            </ion-item>
+            <!-- Input para cambiar la empleabilidad de la carrera -->
+            <ion-item>
+                <ion-label floating>Empleabilidad</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.employability' [value]='info_carrera.employability'></ion-input>
+            </ion-item>
+            <!-- Input para cambiar el sueldo promedio -->
+            <ion-item>
+                <ion-label floating>Sueldo promedio</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.income' [value]='info_carrera.income'></ion-input>
+            </ion-item>
+            <!-- Ultimo matriculado -->
+            <ion-item>
+                <ion-label floating>Último matriculado</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.last_cut' [value]='info_carrera.last_cut'></ion-input>
+            </ion-item>
+            <!-- Vacantes -->
+            <ion-item>
+                <ion-label floating>Vacantes</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.openings' [value]='info_carrera.openings'></ion-input>
+            </ion-item>
+            <!-- Precio arancel -->
+            <ion-item>
+                <ion-label floating>Precio arancel</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.price' [value]='info_carrera.price'></ion-input>
+            </ion-item>
+            <!-- Horario de la carrera -->
+            <ion-item>
+                <ion-label floating>Horario</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.schedule' [value]='info_carrera.schedule'></ion-input>
+            </ion-item>
+            <!-- Semestres -->
+            <ion-item>
+                <ion-label floating>Semestres</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.semesters' [value]='info_carrera.semesters'></ion-input>
+            </ion-item>
+        </ion-list>
     </div>
 </ion-content>
