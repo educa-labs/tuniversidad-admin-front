@@ -60,7 +60,13 @@ export class DetalleCarreraPage {
             'employability': this.info_carrera['employability'],
             'income': this.info_carrera['income'],
             'last_cut': this.info_carrera['last_cut'],
-            'description': this.info_carrera['description']
+            'description': this.info_carrera['description'],
+            'nem': this.info_carrera['nem'],
+            'ranking': this.info_carrera['ranking'],
+            'language': this.info_carrera['language'],
+            'math': this.info_carrera['math'],
+            'science': this.info_carrera['science'],
+            'history': this.info_carrera['history']
         };
         // Imprimir la info que se enviará a la funcion para actualizar
         console.log('Data actualizar carrera', data_a_enviar);
