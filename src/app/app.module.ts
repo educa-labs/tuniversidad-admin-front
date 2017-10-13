@@ -13,12 +13,14 @@ import { LoginPage } from '../pages/login/login';
 import { UniversidadesPage } from '../pages/universidades/universidades';
 import { DetalleUniversidadPage } from '../pages/detalle-universidad/detalle-universidad';
 import { DetalleCarreraPage } from '../pages/detalle-carrera/detalle-carrera';
+import { AgregarCarreraPage } from '../pages/agregar-carrera/agregar-carrera';
 // importar providers
 import { AuthProvider } from '../providers/auth/auth';
 import { DataUsuariosProvider } from '../providers/data-usuarios/data-usuarios';
 import { DataUniversidadesProvider } from '../providers/data-universidades/data-universidades';
 import { DataCarrerasProvider } from '../providers/data-carreras/data-carreras';
 import { DataAreasProvider } from '../providers/data-areas/data-areas';
+import { CampusProvider } from '../providers/campus/campus';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,8 @@ import { DataAreasProvider } from '../providers/data-areas/data-areas';
         LoginPage,
         UniversidadesPage,
         DetalleUniversidadPage,
-        DetalleCarreraPage
+        DetalleCarreraPage,
+        AgregarCarreraPage
     ],
     imports: [
         BrowserModule,
@@ -44,7 +47,8 @@ import { DataAreasProvider } from '../providers/data-areas/data-areas';
         LoginPage,
         UniversidadesPage,
         DetalleUniversidadPage,
-        DetalleCarreraPage
+        DetalleCarreraPage,
+        AgregarCarreraPage
     ],
     providers: [
         StatusBar,
@@ -54,7 +58,8 @@ import { DataAreasProvider } from '../providers/data-areas/data-areas';
         DataUsuariosProvider,
         DataUniversidadesProvider,
         DataCarrerasProvider,
-        DataAreasProvider
+        DataAreasProvider,
+        CampusProvider
     ]
 })
 export class AppModule {}
