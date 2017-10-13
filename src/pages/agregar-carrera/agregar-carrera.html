@@ -1,0 +1,115 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Agregar carrera</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h2 padding>Agregar una nueva carrera</h2>
+    <!-- Lista con todos los inputs para agregar una carrera -->
+    <ion-list *ngIf='info_carrera_nueva'>
+         <ion-item>
+            <ion-label floating>Titulo</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.title' ></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf='campuses_universidad'>
+            <ion-label>Campus</ion-label>
+            <ion-select [(ngModel)]='info_carrera_nueva.campu_id' >
+                <ion-option text-wrap *ngFor="let p of campuses_universidad.campuses" [value]="p.id" >
+                    {{ p.title }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf='areas'>
+            <ion-label>Area</ion-label>
+            <ion-select [(ngModel)]='info_carrera_nueva.area_id' >
+                <ion-option text-wrap *ngFor="let p of areas" [value]="p.id" >
+                    {{ p.title }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Descripción</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.description' ></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Empleabilidad</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.employability'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Sueldo promedio</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.income'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Último matriculado</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.last_cut'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Vacantes</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.openings'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Precio arancel</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.price'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Horario</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.schedule'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Semestres</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.semesters' ></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Certificacion</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.certification' ></ion-input>
+        </ion-item>
+    </ion-list>
+    <!-- Datos para ponderaciones -->
+    <h2 padding>Ponderaciones</h2>
+    <ion-list *ngIf='info_carrera_nueva'>
+        <ion-item>
+            <ion-label floating>Matemática</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.math'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Lenguaje</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.language'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Historia</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.history'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Ciencias</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.science'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>NEM</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.nem'></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Ranking</ion-label>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.ranking'></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button padding (click)='agregar_carrera()'>Agregar Carrera</button>
+
+</ion-content>

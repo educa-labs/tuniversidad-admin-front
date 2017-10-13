@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 // Importar paginas
 import { DetalleCarreraPage } from '../detalle-carrera/detalle-carrera';
+import { AgregarCarreraPage } from '../agregar-carrera/agregar-carrera';
 // Importar providers
 import { DataUniversidadesProvider } from '../../providers/data-universidades/data-universidades';
 import { CampusProvider } from '../../providers/campus/campus';
@@ -88,5 +89,14 @@ export class DetalleUniversidadPage {
             .then(data => {
                 this.campuses_universidad = data;
             });
+    };
+
+    agregar_carrera() {
+        /* agregar_carrera: funcion para la navegacion entre el detalle de una universidad 
+        y la pagina para agregar carreas */
+        // Push a la pagina para agregar carreras. Le pasa el id de la universidad 
+        this.navCtrl.push(AgregarCarreraPage, {
+            id_universidad: this.id_universidad_seleccionada
+        });
     };
 }

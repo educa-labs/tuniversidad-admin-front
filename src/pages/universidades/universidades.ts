@@ -22,7 +22,7 @@ export class UniversidadesPage {
         public provider_universidades: DataUniversidadesProvider) {
             // Llamar a la funcion para recibir las universidades 
             this.get_universidades();
-    }
+    };
 
     get_universidades() {
         /* get_universidades: funcion que llama a la funcion del provider para
@@ -34,12 +34,13 @@ export class UniversidadesPage {
                 // Guardar la informacion de las universidades 
                 this.universidades = data;
             });
-    }
+    };
 
     ver_universidad(id_universidad) {
         /* ver_universidad: funcion para la navegación entre lista de universidades
         con detalle de una universidad */
         // Push a la pagina de detalle y le pasa la informacion
         this.navCtrl.push(DetalleUniversidadPage,{id_universidad: id_universidad}) 
-    }
+    };
+
 }
