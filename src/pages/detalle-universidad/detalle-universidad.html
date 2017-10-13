@@ -79,4 +79,18 @@
             </ion-grid>
         </ion-item>
     </ion-list>
+    <!-- Empiezan los campuses de la universidad -->
+    <h1 padding>Campuses de la universidad</h1>
+    <!-- Lista con los campuses de la unicersidad -->
+    <ion-list *ngIf='campuses_universidad'>
+        <ion-item *ngFor="let p of campuses_universidad.campuses" >
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-7 class='truncado'>
+                        <p class="primer_elemento">{{ p.title }}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
 </ion-content>
