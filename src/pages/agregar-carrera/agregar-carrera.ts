@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 // Importar providers   
 import { CampusProvider } from '../../providers/campus/campus';
 import { DataAreasProvider } from '../../providers/data-areas/data-areas';
+import { DataCarrerasProvider } from '../../providers/data-carreras/data-carreras';
 
 @Component({
     selector: 'page-agregar-carrera',
@@ -22,7 +23,8 @@ export class AgregarCarreraPage {
         public navCtrl: NavController, 
         public navParams: NavParams,
         public provider_campuses: CampusProvider,
-        public provider_areas: DataAreasProvider) {
+        public provider_areas: DataAreasProvider,
+        public provider_carreras: DataCarrerasProvider) {
             // Recibir las areas 
             this.recibir_areas();
             // Recibir el id de la universidad
@@ -40,6 +42,13 @@ export class AgregarCarreraPage {
         let token = 'fqH6AyiyhQMeqKM8MjMC';
 
         console.log('Data a enviar para agregar', this.info_carrera_nueva);
+        this.provider_carreras.agregar_carrera(this.info_carrera_nueva, token)
+            .then(data => {
+                console.log('Respuesta del servidor al agregar carrera', data);
+                if (data) {
+                    this.navCtrl.pop();
+                };
+            });
     };
 
     recibir_areas() {

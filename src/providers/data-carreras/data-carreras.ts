@@ -37,7 +37,7 @@ export class DataCarrerasProvider {
                     loader.dismiss();
                 })
         }) 
-    }
+    };
 
     actualizar_carrera(data_carrera, id_carrera, token) {
         /* actualizar_carrera: funcion para actualizar la informacion de una carrera
@@ -60,5 +60,29 @@ export class DataCarrerasProvider {
                     loader.dismiss();
                 })
         })
+    };
+
+    agregar_carrera(data_a_enviar, token) {
+        /* agregar_carrera: funcion para agregar una carrera. Hace post a la API  */
+        let loader = this.loading.create({ content: 'Agregando carrera...' });
+        loader.present();
+
+        return new Promise(resolve => {
+            // Headers para hacer la consulta
+            let headers = new Headers();
+            headers.append('token', token);
+            headers.append('Content-Type', 'application/json');
+            // Hacer POST a la API 
+            this.http.post(this.api + '/carreers', JSON.stringify(data_a_enviar), {headers: headers})
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                    loader.dismiss();
+                }, error => {
+                    alert('Ocurrió un error al intentar agregar la carrera');
+                    console.log('Ocurrió un error al intentar agregar la carrera', error);
+                    loader.dismiss();
+                });
+        });
     }
 }
