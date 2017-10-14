@@ -72,9 +72,10 @@
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Certificacion</ion-label>
-            <ion-input type="text" [(ngModel)]='info_carrera_nueva.certification' ></ion-input>
+            <ion-label> Certificacion</ion-label>
+            <ion-toggle checked="false" [(ngModel)]='info_carrera_nueva.certification'></ion-toggle>
         </ion-item>
+
     </ion-list>
     <!-- Datos para ponderaciones -->
     <h2 padding>Ponderaciones</h2>

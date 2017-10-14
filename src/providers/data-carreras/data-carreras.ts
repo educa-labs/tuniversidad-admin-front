@@ -9,7 +9,7 @@ export class DataCarrerasProvider {
     Tiene todas las funciones necesarias para manejar la info */
 
     // Url de la API
-    api: string = 'http://api.admin.tuniversidad.cl/';
+    api: string = 'http://api.admin.tuniversidad.cl';
 
     constructor(public http: Http, public loading: LoadingController) {}
 
@@ -84,5 +84,31 @@ export class DataCarrerasProvider {
                     loader.dismiss();
                 });
         });
-    }
+    };
+
+    eliminar_carrera(id_carrera, token) {
+        /* eliminar_carrera: funcion para eliminar una carrera. Recibe el id de la carrera
+        y hace DELETE a la API */
+        let loader = this.loading.create({ content: 'Eliminando carrera...' });
+        loader.present();
+
+        return new Promise(resolve => {
+            // Headers para hacer la consulta
+            let headers = new Headers();
+            headers.append('token', token);
+            headers.append('Content-Type', 'application/json');
+
+            this.http.delete(this.api + '/carreers/' + id_carrera, { headers: headers })
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                    console.log('Data recibida al borrar una carrera', data);
+                    loader.dismiss();
+                }, error => {
+                    alert('Ocurrió un error al intentar borrar una carrera');
+                    console.log('Ocurrió un error al intentar borrar una carrera', error);
+                    loader.dismiss();
+                });
+        });
+    };
 }

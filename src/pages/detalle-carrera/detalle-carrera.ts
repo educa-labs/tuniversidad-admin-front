@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 // Importar providers
 import { DataCarrerasProvider } from '../../providers/data-carreras/data-carreras';
 import { DataAreasProvider } from '../../providers/data-areas/data-areas';
@@ -23,7 +24,8 @@ export class DetalleCarreraPage {
         public navCtrl: NavController, 
         public navParams: NavParams,
         public provider_carreras: DataCarrerasProvider,
-        public provider_areas: DataAreasProvider) {
+        public provider_areas: DataAreasProvider,
+        public alertCtrl: AlertController) {
             // Recibir el id de la carrera seleccionada 
             this.id_carrera_seleccionada = navParams.get('id_carrera');
             // Recibir toda la informacion de la carrera
@@ -90,5 +92,42 @@ export class DetalleCarreraPage {
                 // Guardar las areas 
                 this.areas = data['data']['areas'];
             })
+    };
+
+    borrar_carrera() {
+        /* borrar_carerra: funcion para borrar la carrera. Primero muestra un alert de 
+        confirmacion. Si se acepta se llama a funcion del provider. Si se cancela se
+        borra el alert */
+
+        let confirm = this.alertCtrl.create({
+            title: 'Confirmar eliminar carrera',
+            message: '¿Seguro quiere borrar esta carrera don Ignacio? No hay vuelta atrás...',
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    handler: () => {
+                        console.log('Se apretó cancelar');
+                    }
+                },
+                {
+                    text: 'Aceptar',
+                    handler: () => {
+                        console.log('Se apretó para que se borrara una carrera');
+                        let token = 'fqH6AyiyhQMeqKM8MjMC';
+                        // Llamar a la funcion del provider 
+                        this.provider_carreras.eliminar_carrera(this.id_carrera_seleccionada, token)
+                            .then(data => {
+                                if (data['status'] == 'success') {
+                                    this.navCtrl.pop();
+                                } else {
+                                    alert('Ocurrió un error intentando borrar la carrera')
+                                }
+                            })
+                     }
+                }
+            ]
+        });
+        // Mostrar alert de confirmacion
+        confirm.present();
     };
 }
