@@ -67,7 +67,14 @@ export class DetalleUniversidadPage {
             "title": this.info_universidad_seleccionada.title,
             "website": this.info_universidad_seleccionada.website,
             "motto": this.info_universidad_seleccionada.motto,
-            "initials": this.info_universidad_seleccionada.initials
+            "initials": this.info_universidad_seleccionada.initials,
+            "freeness": this.info_universidad_seleccionada.freeness,
+            "foundation": this.info_universidad_seleccionada.foundation,
+            "postgraduates": this.info_universidad_seleccionada.postgraduates,
+            "doctorates": this.info_universidad_seleccionada.doctorates,
+            "description": this.info_universidad_seleccionada.description,
+            "students": this.info_universidad_seleccionada.students,
+            "degrees": this.info_universidad_seleccionada.degrees,
         };
 
         console.log('Data a enviar', data_a_enviar);
