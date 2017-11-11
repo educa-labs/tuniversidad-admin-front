@@ -38,6 +38,41 @@
             <ion-label color="primary" stacked>Iniciales</ion-label>
             <ion-input [(ngModel)]="info_universidad_seleccionada.initials"></ion-input>
         </ion-item>
+        <!-- Profesores -->
+        <ion-item>
+            <ion-label color="primary" stacked>Profesores</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.teachers"></ion-input>
+        </ion-item>
+        <!-- Grados -->
+        <ion-item>
+            <ion-label color="primary" stacked>Grados</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.degrees"></ion-input>
+        </ion-item>
+        <!-- Postgrados -->
+        <ion-item>
+            <ion-label color="primary" stacked>Postgrados</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.postgraduates"></ion-input>
+        </ion-item>
+        <!-- Doctorados -->
+        <ion-item>
+            <ion-label color="primary" stacked>Doctorados</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.doctorates"></ion-input>
+        </ion-item>
+        <!-- Alumnos -->
+        <ion-item>
+            <ion-label color="primary" stacked>Estudiantes</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.students"></ion-input>
+        </ion-item>
+        <!-- Descripción -->
+        <ion-item>
+            <ion-label color="primary" stacked>Descripcion</ion-label>
+            <ion-input [(ngModel)]="info_universidad_seleccionada.description"></ion-input>
+        </ion-item>
+        <!-- Gratiodad -->
+        <ion-item>
+            <ion-label> Gratuidad</ion-label>
+            <ion-toggle [(ngModel)]='info_universidad_seleccionada.freeness'></ion-toggle>
+        </ion-item>
     </ion-list>
     <!-- Empiezan las carreras de la universidad -->
     <h1 padding>Carreras de la universidad</h1>
