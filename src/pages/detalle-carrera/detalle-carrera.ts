@@ -37,12 +37,12 @@ export class DetalleCarreraPage {
     recibir_informacion(id_carrera) {
         /* recibir_informacion: funcion para recibir toda la informacion de la
         carrera seleccionada. Llama a la funcion del provider y guarda la info */
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_carreras.get_detalle_carrera(id_carrera, token)
             .then(data => {
                 // Guardar la informacion recibida
-                this.info_carrera = data['carrera'];
+                this.info_carrera = data;
             })
     };
 
@@ -73,7 +73,7 @@ export class DetalleCarreraPage {
         // Imprimir la info que se enviará a la funcion para actualizar
         console.log('Data actualizar carrera', data_a_enviar);
 
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_carreras.actualizar_carrera(data_a_enviar, this.id_carrera_seleccionada, token)
             .then(data => {
@@ -85,12 +85,12 @@ export class DetalleCarreraPage {
         /* recibir_areas: funcion para recibir todas las areas. Llama a la funcion
         del provider y le manda el token */
 
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_areas.get_areas(token)
             .then(data => {
                 // Guardar las areas 
-                this.areas = data['data']['areas'];
+                this.areas = data;
             })
     };
 
@@ -113,7 +113,7 @@ export class DetalleCarreraPage {
                     text: 'Aceptar',
                     handler: () => {
                         console.log('Se apretó para que se borrara una carrera');
-                        let token = 'fqH6AyiyhQMeqKM8MjMC';
+                        let token = 'PMinxy-vRxjbj_g3k8mt';
                         // Llamar a la funcion del provider 
                         this.provider_carreras.eliminar_carrera(this.id_carrera_seleccionada, token)
                             .then(data => {

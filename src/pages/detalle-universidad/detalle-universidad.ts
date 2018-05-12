@@ -34,7 +34,7 @@ export class DetalleUniversidadPage {
             // Recibir toda la informacion de la universidad 
             this.recibir_informacion(this.id_universidad_seleccionada);
             //recibir las carreras de la universidad
-            this.get_carrera(this.id_universidad_seleccionada)
+            this.get_carreras(this.id_universidad_seleccionada)
             // Recibir los campuses de la universidad 
             this.recibir_campuses(this.id_universidad_seleccionada);
     }
@@ -54,15 +54,14 @@ export class DetalleUniversidadPage {
     };
 
     //Para pedir las carreras de una universidad
-    get_carrera(id_universidad) {
+    get_carreras(id_universidad) {
         let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_universidades.get_carreras_universidad(id_universidad, token)
             .then(data => {
                 // Guardar la informacion recibida
                 this.carreras_universidad = data;
-                // Guardar las carreras de la universidad 
-                // this.carreras_universidad = data[1];
+
             })
     }
 
