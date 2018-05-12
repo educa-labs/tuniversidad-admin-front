@@ -71,6 +71,28 @@ export class DataUniversidadesProvider {
         })
     }
 
+    get_carreras_universidad(id_universidad,token) {
+        let loader = this.loading.create({content: 'Recibiendo carreras...'});
+        // Mostrar loader en pantalla
+        loader.present();
+        return new Promise(resolve => {
+            // Headers para hacer la consulta
+            let headers = new Headers();
+            headers.append('token', token);
+            headers.append('Content-Type', 'application/json');
+            // Hacer get a la API 
+            this.http.get(this.api + '/universities/' + id_universidad + '/carreers', {headers: headers})
+                .map(res => res.json())
+                .subscribe(data => {
+                    console.log('Información de las carreras', data);
+                    // Resolver promesa
+                    resolve(data);
+                    // Desaparece loader de la pantalla
+                    loader.dismiss();
+                })
+        })
+    }
+
     actualizar_universidad(data_universidad, id_universidad, token) {
         /* actualizar_universidad: funcion para actualizar la informacion de una universidad
         lo que hace es recibir un json con toda la información de la universidad y la manda */

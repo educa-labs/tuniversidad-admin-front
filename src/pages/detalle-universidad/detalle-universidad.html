@@ -98,20 +98,20 @@
     </ion-item>
     <!-- Lista con las carreras de la universidad -->
     <ion-list>
-        <ion-item *ngFor="let p of carreras_universidad" (click)='ver_carrera(p[0])'>
+        <ion-item *ngFor="let p of carreras_universidad" (click)='ver_carrera(p["id"])'>
             <ion-grid>
                 <ion-row>
                     <!-- Nombre de la carrera -->
                     <ion-col col-7 class='truncado'>
-                        <p class="primer_elemento">{{ p[1] }} - {{ p[4] }}</p>
+                        <p class="primer_elemento">{{ p["title"] }} - {{ p["campu_name"] }}</p>
                     </ion-col>
                     <!-- Area de la carrera -->
                     <ion-col col-3 class='truncado'>
-                        <p class="fila">{{ p[2] }}</p>
+                        <p class="fila">{{ p["area_title"] }}</p>
                     </ion-col>
                     <!-- Visitas totales de la carrera -->
                     <ion-col col-2>
-                        <p class="fila">{{ p[3] }}</p>
+                        <p class="fila">{{ p["visits"] }}</p>
                     </ion-col>
                 </ion-row>
             </ion-grid>
