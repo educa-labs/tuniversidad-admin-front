@@ -24,7 +24,7 @@ export class DataCarrerasProvider {
         return new Promise(resolve => {
             // Headers para hacer la consulta
             let headers = new Headers();
-            headers.append('token', token);
+            headers.append('Authorization', token);
             headers.append('Content-Type', 'application/json');
             // Hacer get a la API 
             this.http.get(this.api + '/carreers/' + id_carrera, { headers: headers })
@@ -49,7 +49,7 @@ export class DataCarrerasProvider {
         return new Promise(resolve => {
             // Headers para hacer la consulta 
             let headers = new Headers();
-            headers.append('token', token);
+            headers.append('Authorization', token);
             headers.append('Content-Type', 'application/json');
             // Hacer Patch a la API
             this.http.patch(this.api + '/carreers/' + id_carrera, JSON.stringify(data_carrera), { headers: headers })
@@ -70,7 +70,7 @@ export class DataCarrerasProvider {
         return new Promise(resolve => {
             // Headers para hacer la consulta
             let headers = new Headers();
-            headers.append('token', token);
+            headers.append('Authorization', token);
             headers.append('Content-Type', 'application/json');
             // Hacer POST a la API 
             this.http.post(this.api + '/carreers', JSON.stringify(data_a_enviar), {headers: headers})
@@ -95,7 +95,7 @@ export class DataCarrerasProvider {
         return new Promise(resolve => {
             // Headers para hacer la consulta
             let headers = new Headers();
-            headers.append('token', token);
+            headers.append('Authorization', token);
             headers.append('Content-Type', 'application/json');
 
             this.http.delete(this.api + '/carreers/' + id_carrera, { headers: headers })
