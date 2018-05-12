@@ -103,7 +103,7 @@ export class DetalleCarreraPage {
 
         let confirm = this.alertCtrl.create({
             title: 'Confirmar eliminar carrera',
-            message: '¿Seguro quiere borrar esta carrera don Ignacio? No hay vuelta atrás...',
+            message: '¿Seguro quieres borras esta carrera? No hay vuelta atrás...',
             buttons: [
                 {
                     text: 'Cancelar',

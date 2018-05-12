@@ -16,7 +16,7 @@
         <ion-item *ngIf='campuses_universidad'>
             <ion-label>Campus</ion-label>
             <ion-select [(ngModel)]='info_carrera_nueva.campu_id' >
-                <ion-option text-wrap *ngFor="let p of campuses_universidad.campuses" [value]="p.id" >
+                <ion-option text-wrap *ngFor="let p of campuses_universidad" [value]="p.id" >
                     {{ p.title }}
                 </ion-option>
             </ion-select>
@@ -47,7 +47,7 @@
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Último matriculado</ion-label>
+            <ion-label floating>Corte</ion-label>
             <ion-input type="text" [(ngModel)]='info_carrera_nueva.last_cut'></ion-input>
         </ion-item>
 
@@ -82,32 +82,32 @@
     <ion-list *ngIf='info_carrera_nueva'>
         <ion-item>
             <ion-label floating>Matemática</ion-label>
-            <ion-input type="text" [(ngModel)]='info_carrera_nueva.math'></ion-input>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.weighing.math'></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Lenguaje</ion-label>
-            <ion-input type="text" [(ngModel)]='info_carrera_nueva.language'></ion-input>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.weighing.language'></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Historia</ion-label>
-            <ion-input type="text" [(ngModel)]='info_carrera_nueva.history'></ion-input>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.weighing.history'></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Ciencias</ion-label>
-            <ion-input type="text" [(ngModel)]='info_carrera_nueva.science'></ion-input>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.weighing.science'></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>NEM</ion-label>
-            <ion-input type="text" [(ngModel)]='info_carrera_nueva.nem'></ion-input>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.weighing.NEM'></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Ranking</ion-label>
-            <ion-input type="text" [(ngModel)]='info_carrera_nueva.ranking'></ion-input>
+            <ion-input type="text" [(ngModel)]='info_carrera_nueva.weighing.ranking'></ion-input>
         </ion-item>
     </ion-list>
 

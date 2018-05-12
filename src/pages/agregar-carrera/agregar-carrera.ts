@@ -32,14 +32,14 @@ export class AgregarCarreraPage {
             // Recibir los campuses de la universidad
             this.recibir_campuses(this.id_universidad);
             // Setear la info de la nueva carrera
-            this.info_carrera_nueva = {'university_id': this.id_universidad};
+            this.info_carrera_nueva = {'university_id': this.id_universidad, 'weighing':{}};
     };
 
     agregar_carrera() {
         /* agregar_carrera: funcion para enviar toda la informacion a agregar
         a la funcion del provider. Ordena toda la informacion que se enviará
         y llama a la función. */
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         console.log('Data a enviar para agregar', this.info_carrera_nueva);
         this.provider_carreras.agregar_carrera(this.info_carrera_nueva, token)
@@ -54,19 +54,19 @@ export class AgregarCarreraPage {
     recibir_areas() {
         /* recibir_areas:funcion funcion para recibir las areas. Llama a la funcion 
         del provider de las areas */
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_areas.get_areas(token)
             .then(data => {
                 // Guardar las areas 
-                this.areas = data['data']['areas'];
+                this.areas = data;
             });
     };
 
     recibir_campuses(id_universidad) {
         /* recibir_campuses: funcion para recibir la lista con todos los campuses
         de la universidad. Recibe el id de la universidad y llama a la funcion del provider */
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_campuses.get_campuses_universidad(token, id_universidad)
             .then(data => {
