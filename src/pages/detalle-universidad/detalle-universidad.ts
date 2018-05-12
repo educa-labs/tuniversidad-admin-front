@@ -40,14 +40,14 @@ export class DetalleUniversidadPage {
     recibir_informacion(id_universidad) {
         /* recibir_informacion: funcion para recibir toda la informacion de la 
         universidad seleccionada. Llama a la funcion del provider y guarda la info */
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_universidades.get_detalle_universidad(id_universidad, token)
             .then(data => {
                 // Guardar la informacion recibida
-                this.info_universidad_seleccionada = data[0];
+                this.info_universidad_seleccionada = data;
                 // Guardar las carreras de la universidad 
-                this.carreras_universidad = data[1];
+                // this.carreras_universidad = data[1];
             })
     };
 
@@ -91,10 +91,11 @@ export class DetalleUniversidadPage {
         /* recibir_campuses: funcion para recibir todos los campuses de una universidad,
         Recibe el id de la universidad actual y consulta a la funcion del provider */
 
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
         this.provider_campuses.get_campuses_universidad(token, id_universidad)
             .then(data => {
                 this.campuses_universidad = data;
+                
             });
     };
 
