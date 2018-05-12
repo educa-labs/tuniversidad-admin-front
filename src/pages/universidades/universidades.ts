@@ -27,7 +27,7 @@ export class UniversidadesPage {
     get_universidades() {
         /* get_universidades: funcion que llama a la funcion del provider para
         recibir informacion basica de las universidades */
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_universidades.get_todas_universidades(token)
             .then(data => {

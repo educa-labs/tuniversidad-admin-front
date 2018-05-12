@@ -28,20 +28,20 @@
 
     <ion-list>
         <!-- Elemento: repetir las universidades -->
-        <ion-item *ngFor="let p of universidades" (click)='ver_universidad(p[3])'>
+        <ion-item *ngFor="let p of universidades" (click)='ver_universidad(p["id"])'>
             <ion-grid>
                 <ion-row>
                     <!-- Nombre de la universidad -->
                     <ion-col col-6 class='truncado'>
-                        <p class="primer_elemento">{{ p[0] }}</p>
+                        <p class="primer_elemento">{{ p["title"] }}</p>
                     </ion-col>
                     <!-- Sigla de la universidad -->
                     <ion-col col-3 class='truncado'>
-                        <p class="fila">{{ p[1] }}</p>
+                        <p class="fila">{{ p["initials"] }}</p>
                     </ion-col>
                     <!-- Visitas totales de la universidad -->
                     <ion-col col-3>
-                        <p class="fila">{{ p[2] }}</p>
+                        <p class="fila">{{ p["visits"] }}</p>
                     </ion-col>
                 </ion-row>
             </ion-grid>

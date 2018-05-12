@@ -25,7 +25,7 @@ export class User {
 @Injectable()
 export class AuthProvider {
 
-    api: string = 'http://api.admin.tuniversidad.cl/';
+    api: string = 'http://localhost:3000';
     // Usuario actual
     usuario_actual: User;
     // Información recibida
@@ -46,10 +46,9 @@ export class AuthProvider {
                 let headers = new Headers();
                 headers.append('Accept', 'application/tuniversidad.v1');
                 headers.append('Content-Type', 'application/json');
-
                 let credenciales_a_mandar = {'session': {'email': credenciales.email, 'password': credenciales.password}}
 
-                return this.http.post(this.api + '/login', JSON.stringify(credenciales_a_mandar), {headers: headers})
+                return this.http.post(this.api + '/sessions', JSON.stringify(credenciales_a_mandar), {headers: headers})
                     .map(res => res.json())
                     .subscribe(data => {
                         // Crear loader

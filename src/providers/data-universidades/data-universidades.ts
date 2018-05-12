@@ -9,7 +9,7 @@ export class DataUniversidadesProvider {
     Tiene todas las funciones necesarias para manejar la info. */
 
     // Url de la api
-    api: string = 'http://api.admin.tuniversidad.cl/';
+    api: string = 'http://localhost:3000';
     // Info de todas las universidades
     info_todas_las_universidades: any;
 
