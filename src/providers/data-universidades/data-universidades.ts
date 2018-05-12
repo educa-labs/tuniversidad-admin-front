@@ -28,7 +28,7 @@ export class DataUniversidadesProvider {
         return new Promise(resolve => {
             // Headers para hacer la consulta
             let headers = new Headers();
-            headers.append('token', token);
+            headers.append('Authorization', token);
             headers.append('Content-Type', 'application/json');
             // Hacer get a la api
             this.http.get(this.api + '/universities', {headers: headers})
@@ -56,7 +56,7 @@ export class DataUniversidadesProvider {
         return new Promise(resolve => {
             // Headers para hacer la consulta
             let headers = new Headers();
-            headers.append('token', token);
+            headers.append('Authorization', token);
             headers.append('Content-Type', 'application/json');
             // Hacer get a la API 
             this.http.get(this.api + '/universities/' + id_universidad, {headers: headers})
@@ -78,7 +78,7 @@ export class DataUniversidadesProvider {
         return new Promise(resolve => {
             // Headers para hacer la consulta
             let headers = new Headers();
-            headers.append('token', token);
+            headers.append('Authorization', token);
             headers.append('Content-Type', 'application/json');
             // Hacer get a la API 
             this.http.get(this.api + '/universities/' + id_universidad + '/carreers', {headers: headers})
@@ -103,7 +103,8 @@ export class DataUniversidadesProvider {
        return new Promise(resolve => {
            // Headers para hacer la consulta
            let headers = new Headers();
-           headers.append('token', token);
+           console.log(token)
+           headers.append('Authorization', token);
            headers.append('Content-Type', 'application/json');
            // Hacer patch a la API
            this.http.patch(this.api + '/universities/' + id_universidad, JSON.stringify(data_universidad), { headers: headers })

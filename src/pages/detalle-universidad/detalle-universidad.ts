@@ -76,7 +76,6 @@ export class DetalleUniversidadPage {
         /* actualizar_universidad: funcion para actualizar la informacion de una de 
         lcas universidades. Lo que hace es ordenar la data que se enviará y llama 
         a la funcion del provider */
-
         let data_a_enviar = {
             "title": this.info_universidad_seleccionada.title,
             "website": this.info_universidad_seleccionada.website,
@@ -93,7 +92,7 @@ export class DetalleUniversidadPage {
 
         console.log('Data a enviar', data_a_enviar);
 
-        let token = 'fqH6AyiyhQMeqKM8MjMC';
+        let token = 'PMinxy-vRxjbj_g3k8mt';
 
         this.provider_universidades.actualizar_universidad(data_a_enviar, this.id_universidad_seleccionada, token)
             .then(data => {
