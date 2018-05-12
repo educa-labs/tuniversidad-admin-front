@@ -28,7 +28,6 @@ export class MyApp {
 
             // Configurar las paginas del menu
             this.paginas = [
-                { titulo: 'Usuarios', component: UsuariosPage, icon: 'person'  },
                 { titulo: 'Universidades', component: UniversidadesPage, icon: 'paper' }
             ]
             // Cuando está lista la plataforma
