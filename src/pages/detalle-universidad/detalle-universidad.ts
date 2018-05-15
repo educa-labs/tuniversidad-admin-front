@@ -83,6 +83,7 @@ export class DetalleUniversidadPage {
             "initials": this.info_universidad_seleccionada.initials,
             "freeness": this.info_universidad_seleccionada.freeness,
             "foundation": this.info_universidad_seleccionada.foundation,
+            "teachers": this.info_universidad_seleccionada['teachers'],
             "postgraduates": this.info_universidad_seleccionada.postgraduates,
             "doctorates": this.info_universidad_seleccionada.doctorates,
             "description": this.info_universidad_seleccionada.description,
