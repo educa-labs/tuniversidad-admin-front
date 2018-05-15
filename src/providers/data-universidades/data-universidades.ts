@@ -115,4 +115,25 @@ export class DataUniversidadesProvider {
                })
        })
     }
+
+    crear_universidad(data_universidad,token) {
+        let loader = this.loading.create({ content: 'Actualizando universidad...' });
+       // Mostrar loader
+       loader.present();
+       return new Promise(resolve => {
+           // Headers para hacer la consulta
+           let headers = new Headers();
+           console.log(token)
+           headers.append('Authorization', token);
+           headers.append('Content-Type', 'application/json');
+           // Hacer post a la API
+           this.http.post(this.api + '/universities/', JSON.stringify(data_universidad), { headers: headers })
+               .map(res => res.json())
+               .subscribe(data => {
+                   resolve(data);
+                   loader.dismiss();
+               })
+       })
+    }
+
 }
