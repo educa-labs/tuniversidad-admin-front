@@ -12,6 +12,7 @@ import { UsuariosPage } from '../pages/usuarios/usuarios';
 import { LoginPage } from '../pages/login/login';
 import { UniversidadesPage } from '../pages/universidades/universidades';
 import { DetalleUniversidadPage } from '../pages/detalle-universidad/detalle-universidad';
+import { AgregarUniversidadPage } from '../pages/agregar-universidad/agregar-universidad';
 import { DetalleCarreraPage } from '../pages/detalle-carrera/detalle-carrera';
 import { AgregarCarreraPage } from '../pages/agregar-carrera/agregar-carrera';
 // importar providers
@@ -31,7 +32,8 @@ import { CampusProvider } from '../providers/campus/campus';
         UniversidadesPage,
         DetalleUniversidadPage,
         DetalleCarreraPage,
-        AgregarCarreraPage
+        AgregarCarreraPage,
+        AgregarUniversidadPage
     ],
     imports: [
         BrowserModule,
@@ -48,7 +50,8 @@ import { CampusProvider } from '../providers/campus/campus';
         UniversidadesPage,
         DetalleUniversidadPage,
         DetalleCarreraPage,
-        AgregarCarreraPage
+        AgregarCarreraPage,
+        AgregarUniversidadPage
     ],
     providers: [
         StatusBar,

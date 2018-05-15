@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 // Importar paginas 
 import { DetalleUniversidadPage } from '../detalle-universidad/detalle-universidad';
+import { AgregarUniversidadPage } from '../agregar-universidad/agregar-universidad'; 
 // Importar providers
 import { DataUniversidadesProvider } from '../../providers/data-universidades/data-universidades';
 
@@ -42,5 +43,10 @@ export class UniversidadesPage {
         // Push a la pagina de detalle y le pasa la informacion
         this.navCtrl.push(DetalleUniversidadPage,{id_universidad: id_universidad}) 
     };
+
+    agregar_universidad() {
+        // funcion para la navegación que lleva a vista de crear universidad
+        this.navCtrl.push(AgregarUniversidadPage) 
+    }
 
 }
