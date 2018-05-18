@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 // Importar paginas
 import { DetalleCarreraPage } from '../detalle-carrera/detalle-carrera';
 import { AgregarCarreraPage } from '../agregar-carrera/agregar-carrera';
@@ -23,41 +24,41 @@ export class DetalleUniversidadPage {
     carreras_universidad: any;
     // Campuses de la universidad 
     campuses_universidad: any;
+    token: string;
 
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
         public provider_universidades: DataUniversidadesProvider,
-        public provider_campuses: CampusProvider) {
+        public provider_campuses: CampusProvider,
+        public storage: Storage) {
             // Recibir el id de la universidad seleccionada
             this.id_universidad_seleccionada = navParams.get('id_universidad');
-            // Recibir toda la informacion de la universidad 
-            this.recibir_informacion(this.id_universidad_seleccionada);
-            //recibir las carreras de la universidad
-            this.get_carreras(this.id_universidad_seleccionada)
-            // Recibir los campuses de la universidad 
-            this.recibir_campuses(this.id_universidad_seleccionada);
+            this.storage.get("user").then((data) => {
+                this.token = data.token
+                // Recibir toda la informacion de la universidad 
+                this.recibir_informacion(this.id_universidad_seleccionada);
+                //recibir las carreras de la universidad
+                this.get_carreras(this.id_universidad_seleccionada)
+                // Recibir los campuses de la universidad 
+                this.recibir_campuses(this.id_universidad_seleccionada);
+            })
     }
 
     recibir_informacion(id_universidad) {
         /* recibir_informacion: funcion para recibir toda la informacion de la 
         universidad seleccionada. Llama a la funcion del provider y guarda la info */
-        let token = 'PMinxy-vRxjbj_g3k8mt';
 
-        this.provider_universidades.get_detalle_universidad(id_universidad, token)
+        this.provider_universidades.get_detalle_universidad(id_universidad, this.token)
             .then(data => {
                 // Guardar la informacion recibida
                 this.info_universidad_seleccionada = data;
-                // Guardar las carreras de la universidad 
-                // this.carreras_universidad = data[1];
             })
     };
 
     //Para pedir las carreras de una universidad
     get_carreras(id_universidad) {
-        let token = 'PMinxy-vRxjbj_g3k8mt';
-
-        this.provider_universidades.get_carreras_universidad(id_universidad, token)
+        this.provider_universidades.get_carreras_universidad(id_universidad, this.token)
             .then(data => {
                 // Guardar la informacion recibida
                 this.carreras_universidad = data;
@@ -92,10 +93,7 @@ export class DetalleUniversidadPage {
         };
 
         console.log('Data a enviar', data_a_enviar);
-
-        let token = 'PMinxy-vRxjbj_g3k8mt';
-
-        this.provider_universidades.actualizar_universidad(data_a_enviar, this.id_universidad_seleccionada, token)
+        this.provider_universidades.actualizar_universidad(data_a_enviar, this.id_universidad_seleccionada, this.token)
             .then(data => {
                 console.log('Respuesta al actualizar', data);
             })
@@ -104,9 +102,7 @@ export class DetalleUniversidadPage {
     recibir_campuses(id_universidad) {
         /* recibir_campuses: funcion para recibir todos los campuses de una universidad,
         Recibe el id de la universidad actual y consulta a la funcion del provider */
-
-        let token = 'PMinxy-vRxjbj_g3k8mt';
-        this.provider_campuses.get_campuses_universidad(token, id_universidad)
+        this.provider_campuses.get_campuses_universidad(this.token, id_universidad)
             .then(data => {
                 this.campuses_universidad = data;
                 

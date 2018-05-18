@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { NavController, NavParams } from 'ionic-angular';
 // Importar paginas 
 import { DetalleUniversidadPage } from '../detalle-universidad/detalle-universidad';
@@ -16,21 +17,26 @@ export class UniversidadesPage {
     de las universidades */
 
     universidades: any;
+    token: string
 
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
-        public provider_universidades: DataUniversidadesProvider) {
-            // Llamar a la funcion para recibir las universidades 
-            this.get_universidades();
+        public provider_universidades: DataUniversidadesProvider,
+        public storage: Storage) {
+            // Extraemos token del usuario
+            this.storage.get("user").then((data) => {
+                this.token = data.token
+                // Llamar a la funcion para recibir las universidades
+                this.get_universidades();
+            })
+            
     };
 
     get_universidades() {
         /* get_universidades: funcion que llama a la funcion del provider para
         recibir informacion basica de las universidades */
-        let token = 'PMinxy-vRxjbj_g3k8mt';
-
-        this.provider_universidades.get_todas_universidades(token)
+        this.provider_universidades.get_todas_universidades(this.token)
             .then(data => {
                 // Guardar la informacion de las universidades 
                 this.universidades = data;

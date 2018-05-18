@@ -103,7 +103,6 @@ export class DataUniversidadesProvider {
        return new Promise(resolve => {
            // Headers para hacer la consulta
            let headers = new Headers();
-           console.log(token)
            headers.append('Authorization', token);
            headers.append('Content-Type', 'application/json');
            // Hacer patch a la API
@@ -123,7 +122,7 @@ export class DataUniversidadesProvider {
        return new Promise(resolve => {
            // Headers para hacer la consulta
            let headers = new Headers();
-           console.log(token)
+
            headers.append('Authorization', token);
            headers.append('Content-Type', 'application/json');
            // Hacer post a la API

@@ -10,15 +10,18 @@ export class User {
     id: number;
     name: string;
     email: string;
+    token: string;
 
     constructor(
         id: number,
         name: string,
-        email: string) {
+        email: string,
+        token: string,) {
             // Setear la información del usuario actual
             this.id = id;
             this.name = name;
             this.email = email;
+            this.token = token;
     }
 }
 
@@ -58,8 +61,8 @@ export class AuthProvider {
                         // Mostrar loader en pantalla
                         loader.present();
                         // Setear el usuario actual 
-                        this.usuario_actual = new User(0, 'Nombre', 'Email');
                         console.log('Información recibida en el login', data);
+                        this.usuario_actual = new User(data.id, data.first_name, data.email,data.auth_token);
                         // El observer pasa solo si el usuario ingresado es admin
                         observer.next(data['admin']);
                         // Desaparece loader de pantalla

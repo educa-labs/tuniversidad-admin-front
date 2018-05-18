@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 // Importar providers
@@ -19,27 +20,31 @@ export class DetalleCarreraPage {
     info_carrera: any;
     areas: any;
     area_nueva: any;
+    token: string;
 
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
         public provider_carreras: DataCarrerasProvider,
         public provider_areas: DataAreasProvider,
-        public alertCtrl: AlertController) {
+        public alertCtrl: AlertController,
+        public storage: Storage) {
             // Recibir el id de la carrera seleccionada 
             this.id_carrera_seleccionada = navParams.get('id_carrera');
-            // Recibir toda la informacion de la carrera
-            this.recibir_informacion(this.id_carrera_seleccionada);
-            // Recibir las areas 
-            this.recibir_areas();
+            this.storage.get("user").then((data) => {
+                this.token = data.token
+                // Recibir toda la informacion de la carrera
+                this.recibir_informacion(this.id_carrera_seleccionada);
+                // Recibir las areas 
+                this.recibir_areas();
+            })
     };
 
     recibir_informacion(id_carrera) {
         /* recibir_informacion: funcion para recibir toda la informacion de la
         carrera seleccionada. Llama a la funcion del provider y guarda la info */
-        let token = 'PMinxy-vRxjbj_g3k8mt';
 
-        this.provider_carreras.get_detalle_carrera(id_carrera, token)
+        this.provider_carreras.get_detalle_carrera(id_carrera, this.token)
             .then(data => {
                 // Guardar la informacion recibida
                 this.info_carrera = data;
@@ -75,9 +80,7 @@ export class DetalleCarreraPage {
         // Imprimir la info que se enviará a la funcion para actualizar
         console.log('Data actualizar carrera', data_a_enviar);
 
-        let token = 'PMinxy-vRxjbj_g3k8mt';
-
-        this.provider_carreras.actualizar_carrera(data_a_enviar, this.id_carrera_seleccionada, token)
+        this.provider_carreras.actualizar_carrera(data_a_enviar, this.id_carrera_seleccionada, this.token)
             .then(data => {
                 console.log('Respuesta al actualizar', data);
             })
@@ -87,9 +90,7 @@ export class DetalleCarreraPage {
         /* recibir_areas: funcion para recibir todas las areas. Llama a la funcion
         del provider y le manda el token */
 
-        let token = 'PMinxy-vRxjbj_g3k8mt';
-
-        this.provider_areas.get_areas(token)
+        this.provider_areas.get_areas(this.token)
             .then(data => {
                 // Guardar las areas 
                 this.areas = data;
@@ -115,9 +116,8 @@ export class DetalleCarreraPage {
                     text: 'Aceptar',
                     handler: () => {
                         console.log('Se apretó para que se borrara una carrera');
-                        let token = 'PMinxy-vRxjbj_g3k8mt';
                         // Llamar a la funcion del provider 
-                        this.provider_carreras.eliminar_carrera(this.id_carrera_seleccionada, token)
+                        this.provider_carreras.eliminar_carrera(this.id_carrera_seleccionada, this.token)
                             .then(data => {
                                 if (data['status'] == 'success') {
                                     this.navCtrl.pop();

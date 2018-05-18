@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { NavController, NavParams } from 'ionic-angular';
 import { DataUniversidadesProvider } from '../../providers/data-universidades/data-universidades'
 
@@ -9,13 +10,19 @@ import { DataUniversidadesProvider } from '../../providers/data-universidades/da
 })
 export class AgregarUniversidadPage {
 
-  info_universidad_agregar: object
+  info_universidad_agregar: object;
+  token:string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public provider_universidades: DataUniversidadesProvider) {
+    public provider_universidades: DataUniversidadesProvider,
+    public storage: Storage) {
       this.info_universidad_agregar = {};
+      // Extraemos token del usuario
+      this.storage.get("user").then((data) => {
+        this.token = data.token
+    })
   }
 
   agregar_universidad() {
@@ -35,14 +42,13 @@ export class AgregarUniversidadPage {
         "description": this.info_universidad_agregar['description'],
         "students": this.info_universidad_agregar['students'],
         "degrees": this.info_universidad_agregar['degrees'],
+        // TODO: Not Hardcode THIS
         "university_type_id": 1
     };
 
     console.log('Data a enviar', data_a_enviar);
 
-    let token = 'PMinxy-vRxjbj_g3k8mt';
-
-    this.provider_universidades.crear_universidad(data_a_enviar, token)
+    this.provider_universidades.crear_universidad(data_a_enviar, this.token)
         .then(data => {
             console.log('Respuesta al crear', data);
         })
