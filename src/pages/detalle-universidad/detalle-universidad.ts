@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 // Importar paginas
 import { DetalleCarreraPage } from '../detalle-carrera/detalle-carrera';
+import { DetalleCampusPage} from '../detalle-campus/detalle-campus'
 import { AgregarCarreraPage } from '../agregar-carrera/agregar-carrera';
 // Importar providers
 import { DataUniversidadesProvider } from '../../providers/data-universidades/data-universidades';
@@ -72,6 +73,10 @@ export class DetalleUniversidadPage {
         // Navegacion y le pasa el id de la carrera a la nueva pagina 
         this.navCtrl.push(DetalleCarreraPage,{id_carrera: id_carrera});
     };
+
+    ver_campus(id_campus) {
+        this.navCtrl.push(DetalleCampusPage, {id_campus: id_campus})
+    }
 
     actualizar_universidad() {
         /* actualizar_universidad: funcion para actualizar la informacion de una de 

@@ -39,4 +39,25 @@ export class CampusProvider {
         });
     };
 
+    get_campus(id_campus) {
+        let loader = this.loading.create({content: 'Recibiendo universidades...'});
+        // Mostrar loader 
+        loader.present();
+        return new Promise(resolve => {
+            // Headers para hacer la consulta
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            // Hacer get a la api
+            this.http.get(this.api + '/campus/' + id_campus, {headers: headers})
+                .map(res => res.json())
+                .subscribe(data => {
+                    console.log('Informacion del campus recibida:', data);
+                    // Resolver promesa
+                    resolve(data);
+                    // Desaparece loader de la pantalla
+                    loader.dismiss();
+                });
+        });
+    }
+
 }

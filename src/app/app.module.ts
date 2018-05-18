@@ -15,6 +15,7 @@ import { DetalleUniversidadPage } from '../pages/detalle-universidad/detalle-uni
 import { AgregarUniversidadPage } from '../pages/agregar-universidad/agregar-universidad';
 import { DetalleCarreraPage } from '../pages/detalle-carrera/detalle-carrera';
 import { AgregarCarreraPage } from '../pages/agregar-carrera/agregar-carrera';
+import { DetalleCampusPage} from  '../pages/detalle-campus/detalle-campus';
 // importar providers
 import { AuthProvider } from '../providers/auth/auth';
 import { DataUsuariosProvider } from '../providers/data-usuarios/data-usuarios';
@@ -33,7 +34,8 @@ import { CampusProvider } from '../providers/campus/campus';
         DetalleUniversidadPage,
         DetalleCarreraPage,
         AgregarCarreraPage,
-        AgregarUniversidadPage
+        AgregarUniversidadPage,
+        DetalleCampusPage
     ],
     imports: [
         BrowserModule,
@@ -51,7 +53,8 @@ import { CampusProvider } from '../providers/campus/campus';
         DetalleUniversidadPage,
         DetalleCarreraPage,
         AgregarCarreraPage,
-        AgregarUniversidadPage
+        AgregarUniversidadPage,
+        DetalleCampusPage
     ],
     providers: [
         StatusBar,
