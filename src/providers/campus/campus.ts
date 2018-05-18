@@ -60,4 +60,25 @@ export class CampusProvider {
         });
     }
 
+    update_campus(data_campus,id_campus,token) {
+        let loader = this.loading.create({ content: 'Actualizando campus...' });
+        loader.present();
+
+        return new Promise(resolve => {
+            // Headers para hacer la consulta 
+            let headers = new Headers();
+            headers.append('Authorization', token);
+            headers.append('Content-Type', 'application/json');
+            // Hacer Patch a la API
+            this.http.patch(this.api + '/campus/' + id_campus, JSON.stringify(data_campus), { headers: headers })
+                .map(res => res.json())
+                .subscribe(data => {
+                    console.log('Data al actualizar info campus', data);
+                    resolve(data);
+                    loader.dismiss();
+                })
+        })
+    };
+    
+
 }

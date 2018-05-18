@@ -36,5 +36,19 @@ export class DetalleCampusPage {
 
   }
 
+  actualizar_campus(id_campus) {
+    let data_a_enviar = {
+      "title": this.info_campus.title,
+      "lat": this.info_campus.lat,
+      "long": this.info_campus.long,
+      "address": this.info_campus.address,
+  };
+
+  console.log('Data a enviar', data_a_enviar);
+  this.provider_campus.update_campus(data_a_enviar, this.id_campus, this.token)
+      .then(data => {
+          console.log('Respuesta al actualizar', data);
+      })
+  }
 
 }
