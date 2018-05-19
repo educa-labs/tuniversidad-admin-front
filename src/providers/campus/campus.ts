@@ -100,6 +100,32 @@ export class CampusProvider {
                 });
         });
     }
+
+    delete_campus(id_campus, token) {
+        /* eliminar_campus: funcion para eliminar una campus. Recibe el id de la campus
+        y hace DELETE a la API */
+        let loader = this.loading.create({ content: 'Eliminando campus...' });
+        loader.present();
+
+        return new Promise(resolve => {
+            // Headers para hacer la consulta
+            let headers = new Headers();
+            headers.append('Authorization', token);
+            headers.append('Content-Type', 'application/json');
+
+            this.http.delete(this.api + '/campus/' + id_campus, { headers: headers })
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                    console.log('Data recibida al borrar un campus', data);
+                    loader.dismiss();
+                }, error => {   
+                    alert('Ocurrió un error al intentar borrar una campus');
+                    console.log('Ocurrió un error al intentar borrar un campus', error);
+                    loader.dismiss();
+                });
+        });
+    };
     
 
 }

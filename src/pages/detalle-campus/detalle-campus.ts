@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { CampusProvider } from '../../providers/campus/campus'
 import { DataUniversidadesProvider } from '../../providers/data-universidades/data-universidades'
 
@@ -20,6 +21,7 @@ export class DetalleCampusPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public provider_campus: CampusProvider,
+    public alertCtrl: AlertController,
     public storage: Storage) {
       this.load_cities()
       this.id_campus = navParams.get('id_campus');
@@ -59,4 +61,39 @@ export class DetalleCampusPage {
       })
   }
 
+  destroy_campus() {
+    /* borrar_campus: funcion para borrar la campus. Primero muestra un alert de 
+    confirmacion. Si se acepta se llama a funcion del provider. Si se cancela se
+    borra el alert */
+
+    let confirm = this.alertCtrl.create({
+        title: 'Confirmar eliminar campus',
+        message: '¿Seguro quieres borras este campus? No hay vuelta atrás...',
+        buttons: [
+            {
+                text: 'Cancelar',
+                handler: () => {
+                    console.log('Se apretó cancelar');
+                }
+            },
+            {
+                text: 'Aceptar',
+                handler: () => {
+                    console.log('Se apretó para que se borrara el campus');
+                    // Llamar a la funcion del provider 
+                    this.provider_campus.delete_campus(this.id_campus, this.token)
+                        .then(data => {
+                            if (data['status'] == 'success') {
+                                this.navCtrl.pop();
+                            } else {
+                                alert('Ocurrió un error intentando borrar el campus')
+                            }
+                        })
+                 }
+            }
+        ]
+    });
+    // Mostrar alert de confirmacion
+    confirm.present();
+  }
 }
