@@ -135,4 +135,28 @@ export class DataUniversidadesProvider {
        })
     }
 
+    delete_universidad(id_universidad,token) {
+        let loader = this.loading.create({ content: 'Eliminando carrera...' });
+        loader.present();
+
+        return new Promise(resolve => {
+            // Headers para hacer la consulta
+            let headers = new Headers();
+            headers.append('Authorization', token);
+            headers.append('Content-Type', 'application/json');
+
+            this.http.delete(this.api + '/universities/' + id_universidad, { headers: headers })
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                    console.log('Data recibida al borrar una universidad', data);
+                    loader.dismiss();
+                }, error => {
+                    alert('Ocurrió un error al intentar borrar una universidad');
+                    console.log('Ocurrió un error al intentar borrar una universidad', error);
+                    loader.dismiss();
+                });
+        });
+    }
+
 }

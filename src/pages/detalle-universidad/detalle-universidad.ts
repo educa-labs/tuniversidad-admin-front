@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 // Importar paginas
 import { DetalleCarreraPage } from '../detalle-carrera/detalle-carrera';
 import { DetalleCampusPage} from '../detalle-campus/detalle-campus'
@@ -32,6 +33,7 @@ export class DetalleUniversidadPage {
         public navParams: NavParams,
         public provider_universidades: DataUniversidadesProvider,
         public provider_campuses: CampusProvider,
+        public alertCtrl: AlertController,
         public storage: Storage) {
             // Recibir el id de la universidad seleccionada
             this.id_universidad_seleccionada = navParams.get('id_universidad');
@@ -122,4 +124,37 @@ export class DetalleUniversidadPage {
             id_universidad: this.id_universidad_seleccionada
         });
     };
+
+    destroy_universidad(id_universidad) {
+        let confirm = this.alertCtrl.create({
+            title: 'Confirmar eliminar universidad',
+            message: '¿Seguro quieres borras esta universidad? No hay vuelta atrás...',
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    handler: () => {
+                        console.log('Se apretó cancelar');
+                    }
+                },
+                {
+                    text: 'Aceptar',
+                    handler: () => {
+                        console.log('Se apretó para que se borrara una universidad');
+                        // Llamar a la funcion del provider 
+                        this.provider_universidades.delete_universidad(this.id_universidad_seleccionada, this.token)
+                            .then(data => {
+                                if (data['status'] == 'success') {
+                                    this.navCtrl.pop();
+                                } else {
+                                    alert('Ocurrió un error intentando borrar la universidad')
+                                }
+                            })
+                     }
+                }
+            ]
+        });
+        // Mostrar alert de confirmacion
+        confirm.present();
+    }
+
 }
