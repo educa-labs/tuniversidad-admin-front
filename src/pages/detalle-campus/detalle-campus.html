@@ -24,6 +24,14 @@
         <h1 padding>Información de: {{ info_campus.title }}</h1>
         <!-- Lista con todos los inputs para cambiar la info de la campus  -->
         <ion-list>
+            <ion-item *ngIf='ciudades'>
+                    <ion-label>Ciudad</ion-label>
+                    <ion-select [(ngModel)]='info_campus.city_id' >
+                        <ion-option text-wrap *ngFor="let ciudad of ciudades" [value]="ciudad.id" >
+                            {{ ciudad.title }}
+                        </ion-option>
+                    </ion-select>
+                </ion-item>
             <!-- Input para cambiar el nombre del campus -->
             <ion-item>
                 <ion-label floating>Nombre</ion-label>

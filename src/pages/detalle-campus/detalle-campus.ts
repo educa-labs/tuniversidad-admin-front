@@ -14,13 +14,14 @@ export class DetalleCampusPage {
   id_campus: any;
   token: string;
   info_campus: any;
-  universidades: any;
+  ciudades: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public provider_campus: CampusProvider,
     public storage: Storage) {
+      this.load_cities()
       this.id_campus = navParams.get('id_campus');
       this.storage.get("user").then((data) => {
         this.token = data.token
@@ -36,12 +37,19 @@ export class DetalleCampusPage {
 
   }
 
+  load_cities() {
+    this.provider_campus.get_cities().then(data => {
+      this.ciudades = data
+    })
+  }
+
   actualizar_campus(id_campus) {
     let data_a_enviar = {
       "title": this.info_campus.title,
       "lat": this.info_campus.lat,
       "long": this.info_campus.long,
       "address": this.info_campus.address,
+      "city_id": this.info_campus.city_id
   };
 
   console.log('Data a enviar', data_a_enviar);
