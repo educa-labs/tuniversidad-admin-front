@@ -6,6 +6,7 @@ import { AlertController } from 'ionic-angular';
 import { DetalleCarreraPage } from '../detalle-carrera/detalle-carrera';
 import { DetalleCampusPage} from '../detalle-campus/detalle-campus'
 import { AgregarCarreraPage } from '../agregar-carrera/agregar-carrera';
+import { AgregarCampusPage } from '../agregar-campus/agregar-campus' 
 // Importar providers
 import { DataUniversidadesProvider } from '../../providers/data-universidades/data-universidades';
 import { CampusProvider } from '../../providers/campus/campus';
@@ -124,6 +125,12 @@ export class DetalleUniversidadPage {
             id_universidad: this.id_universidad_seleccionada
         });
     };
+
+    agregar_campus() {
+        this.navCtrl.push(AgregarCampusPage, {
+            id_universidad: this.id_universidad_seleccionada
+        });
+    }
 
     destroy_universidad(id_universidad) {
         let confirm = this.alertCtrl.create({

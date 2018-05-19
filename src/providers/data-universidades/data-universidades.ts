@@ -116,8 +116,8 @@ export class DataUniversidadesProvider {
     }
 
     crear_universidad(data_universidad,token) {
-        let loader = this.loading.create({ content: 'Actualizando universidad...' });
-       // Mostrar loader
+        let loader = this.loading.create({ content: 'Creando universidad...' });
+        // Mostrar loader
        loader.present();
        return new Promise(resolve => {
            // Headers para hacer la consulta

@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar color='secondary'>
+    <ion-title>Agregar Campus</ion-title>
+    <button ion-button icon-only (click)='create_campus()'>
+        <ion-icon name="checkmark" ></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!-- Lista con todos los inputs para cambiar la info de la campus  -->
+  <ion-list>
+      <ion-item *ngIf='ciudades'>
+              <ion-label>Ciudad</ion-label>
+              <ion-select [(ngModel)]='info_campus.city_id' >
+                  <ion-option text-wrap *ngFor="let ciudad of ciudades" [value]="ciudad.id" >
+                      {{ ciudad.title }}
+                  </ion-option>
+              </ion-select>
+          </ion-item>
+      <!-- Input para cambiar el nombre del campus -->
+      <ion-item>
+          <ion-label floating>Nombre</ion-label>
+          <ion-input type="text" [(ngModel)]='info_campus.title' [value]="info_campus.title"></ion-input>
+      </ion-item>
+      <!-- Input para cambiar la latitud del campus -->
+      <ion-item>
+          <ion-label floating>Latitud</ion-label>
+          <ion-input type="text" [(ngModel)]='info_campus.lat' [value]='info_campus.lat'></ion-input>
+      </ion-item>
+      <!-- Input para cambiar la longitud del campus -->
+      <ion-item>
+          <ion-label floating>Longitud</ion-label>
+          <ion-input type="text" [(ngModel)]='info_campus.long' [value]='info_campus.long'></ion-input>
+      </ion-item>
+      <!-- Dirección -->
+      <ion-item>
+          <ion-label floating>Dirección</ion-label>
+          <ion-input type="text" [(ngModel)]='info_campus.address' [value]='info_campus.address'></ion-input>
+      </ion-item>
+  </ion-list>
+</ion-content>
