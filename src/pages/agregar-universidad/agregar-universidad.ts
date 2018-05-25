@@ -14,6 +14,8 @@ export class AgregarUniversidadPage {
   token:string;
   university_types: any;
   university_levels: any;
+  profileToUpload: File = null;
+
 
   constructor(
     public navCtrl: NavController,
@@ -32,6 +34,12 @@ export class AgregarUniversidadPage {
   async load_types() {
     this.university_types =  await this.provider_universidades.get_types()
   }
+
+  handleProfileInput(files: FileList) {
+    this.profileToUpload = files.item(0);
+    console.log(this.profileToUpload.name.split('.').pop())
+
+}
 
   agregar_universidad() {
     /* crear_universidad: funcion para crear la informacion de una de 
@@ -54,11 +62,20 @@ export class AgregarUniversidadPage {
         "level": this.info_universidad_agregar['level']
     };
 
-    console.log('Data a enviar', data_a_enviar);
+    const myReader:FileReader = new FileReader();
 
-    this.provider_universidades.crear_universidad(data_a_enviar, this.token)
-        .then(data => {
-            console.log('Respuesta al crear', data);
-        })
+    myReader.onloadend = (e) => {
+      data_a_enviar['profile'] = myReader.result;
+      data_a_enviar['profile_extension'] = this.profileToUpload.name.split('.').pop()
+      console.log('Data a enviar', data_a_enviar);
+      this.provider_universidades.crear_universidad(data_a_enviar, this.token)
+          .then(data => {
+              console.log('Respuesta al crear', data);
+          })
+    }
+    myReader.readAsDataURL(this.profileToUpload);
+
+
+
   };
 }
