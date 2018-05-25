@@ -14,7 +14,7 @@
             </button>
             <button ion-button  (click)='agregar_campus()'>
                     Agregar Campus
-                </button>
+            </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
@@ -41,11 +41,32 @@
             <ion-label color="primary" stacked>Pagina web</ion-label>
             <ion-input [(ngModel)]="info_universidad_seleccionada.website"></ion-input>
         </ion-item>
+
         <!-- Slogan -->
         <ion-item>
             <ion-label color="primary" stacked>Lema</ion-label>
             <ion-input [(ngModel)]="info_universidad_seleccionada.motto"></ion-input>
         </ion-item>
+
+        <!-- Selects para tipo de universidad y de carreras -->
+        <ion-item *ngIf='university_types'>
+            <ion-label>Tipo universidad</ion-label>
+            <ion-select [(ngModel)]='info_universidad_seleccionada.university_type_id' >
+                <ion-option text-wrap *ngFor="let p of university_types" [value]="p.id" >
+                    {{ p.title }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf='university_types'>
+            <ion-label>Tipo de carreras</ion-label>
+            <ion-select [(ngModel)]='info_universidad_seleccionada.level' >
+                <ion-option text-wrap *ngFor="let p of university_levels" [value]="p.id" >
+                    {{ p.title }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+
         <!-- Iniciales -->
         <ion-item>
             <ion-label color="primary" stacked>Iniciales</ion-label>

@@ -27,6 +27,10 @@ export class DetalleUniversidadPage {
     carreras_universidad: any;
     // Campuses de la universidad 
     campuses_universidad: any;
+    //tipos de universidad
+    university_types: any;
+    university_levels: any;
+
     token: string;
 
     constructor(
@@ -38,6 +42,7 @@ export class DetalleUniversidadPage {
         public storage: Storage) {
             // Recibir el id de la universidad seleccionada
             this.id_universidad_seleccionada = navParams.get('id_universidad');
+            this.university_levels = [{id:0, title:"Ambas"},{id:1, title:"Profesional"},{id:2,title:"Técnica"}];
             this.storage.get("user").then((data) => {
                 this.token = data.token
                 // Recibir toda la informacion de la universidad 
@@ -46,8 +51,9 @@ export class DetalleUniversidadPage {
                 this.get_carreras(this.id_universidad_seleccionada)
                 // Recibir los campuses de la universidad 
                 this.recibir_campuses(this.id_universidad_seleccionada);
+                this.load_types()
             })
-    }
+        }
 
     recibir_informacion(id_universidad) {
         /* recibir_informacion: funcion para recibir toda la informacion de la 
@@ -68,6 +74,10 @@ export class DetalleUniversidadPage {
                 this.carreras_universidad = data;
 
             })
+    }
+
+    async load_types() {
+        this.university_types =  await this.provider_universidades.get_types()
     }
 
     ver_carrera(id_carrera) {
@@ -99,6 +109,8 @@ export class DetalleUniversidadPage {
             "students": this.info_universidad_seleccionada.students,
             "degrees": this.info_universidad_seleccionada.degrees,
             "visits": this.info_universidad_seleccionada.visits,
+            "university_type_id": this.info_universidad_seleccionada.university_type_id,
+            "level": this.info_universidad_seleccionada.level
         };
 
         console.log('Data a enviar', data_a_enviar);

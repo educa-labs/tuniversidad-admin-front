@@ -12,6 +12,7 @@ export class DataUniversidadesProvider {
     api: string = 'http://localhost:3000';
     // Info de todas las universidades
     info_todas_las_universidades: any;
+    
 
     constructor(public http: Http, public loading: LoadingController) {}
 
@@ -42,6 +43,28 @@ export class DataUniversidadesProvider {
                     // Desaparece loader de la pantalla
                     loader.dismiss();
                 });
+        })
+    }
+
+    get_types() {
+
+        let loader = this.loading.create({content: 'Recibiendo detalle...'});
+        // Mostrar loader en pantalla
+        loader.present();
+        return new Promise(resolve => {
+            // Headers para hacer la consulta
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            // Hacer get a la API 
+            this.http.get(this.api + '/university_types/', {headers: headers})
+                .map(res => res.json())
+                .subscribe(data => {
+                    console.log('Tipos de universidad', data);
+                    // Resolver promesa
+                    resolve(data);
+                    // Desaparece loader de la pantalla
+                    loader.dismiss();
+                })
         })
     }
 

@@ -12,6 +12,8 @@ export class AgregarUniversidadPage {
 
   info_universidad_agregar: object;
   token:string;
+  university_types: any;
+  university_levels: any;
 
   constructor(
     public navCtrl: NavController,
@@ -19,10 +21,16 @@ export class AgregarUniversidadPage {
     public provider_universidades: DataUniversidadesProvider,
     public storage: Storage) {
       this.info_universidad_agregar = {};
+      this.university_levels = [{id:0, title:"Ambas"},{id:1, title:"Profesional"},{id:2,title:"Técnica"}];
       // Extraemos token del usuario
       this.storage.get("user").then((data) => {
         this.token = data.token
+        this.load_types()
     })
+  }
+
+  async load_types() {
+    this.university_types =  await this.provider_universidades.get_types()
   }
 
   agregar_universidad() {
@@ -42,8 +50,8 @@ export class AgregarUniversidadPage {
         "description": this.info_universidad_agregar['description'],
         "students": this.info_universidad_agregar['students'],
         "degrees": this.info_universidad_agregar['degrees'],
-        // TODO: Not Hardcode THIS
-        "university_type_id": 1
+        "university_type_id": this.info_universidad_agregar['university_type_id'],
+        "level": this.info_universidad_agregar['level']
     };
 
     console.log('Data a enviar', data_a_enviar);

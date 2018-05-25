@@ -10,63 +10,83 @@
 </ion-header>
 
 <ion-content>
-  <ion-content>
-      <!-- Espacio con los inputs para actualizar la universidad -->
-      <ion-list>
-          <!-- Nombre de la universidad -->
-          <ion-item>
-              <ion-label color="primary" stacked>Nombre universidad</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.title"></ion-input>
-          </ion-item>
-          <!-- Pagina web -->
-          <ion-item>
-              <ion-label color="primary" stacked>Pagina web</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.website"></ion-input>
-          </ion-item>
-          <!-- Slogan -->
-          <ion-item>
-              <ion-label color="primary" stacked>Lema</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.motto"></ion-input>
-          </ion-item>
-          <!-- Iniciales -->
-          <ion-item>
-              <ion-label color="primary" stacked>Iniciales</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.initials"></ion-input>
-          </ion-item>
-          <!-- Profesores -->
-          <ion-item>
-              <ion-label color="primary" stacked>Profesores</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.teachers"></ion-input>
-          </ion-item>
-          <!-- Grados -->
-          <ion-item>
-              <ion-label color="primary" stacked>Grados</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.degrees"></ion-input>
-          </ion-item>
-          <!-- Postgrados -->
-          <ion-item>
-              <ion-label color="primary" stacked>Postgrados</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.postgraduates"></ion-input>
-          </ion-item>
-          <!-- Doctorados -->
-          <ion-item>
-              <ion-label color="primary" stacked>Doctorados</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.doctorates"></ion-input>
-          </ion-item>
-          <!-- Alumnos -->
-          <ion-item>
-              <ion-label color="primary" stacked>Estudiantes</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.students"></ion-input>
-          </ion-item>
-          <!-- Descripción -->
-          <ion-item>
-              <ion-label color="primary" stacked>Descripcion</ion-label>
-              <ion-input [(ngModel)]="info_universidad_agregar.description"></ion-input>
-          </ion-item>
-          <!-- Gratiodad -->
-          <ion-item>
-              <ion-label> Gratuidad</ion-label>
-              <ion-toggle [(ngModel)]='info_universidad_agregar.freeness'></ion-toggle>
-          </ion-item>
-      </ion-list>
+    <!-- Espacio con los inputs para actualizar la universidad -->
+    <ion-list>
+        <!-- Nombre de la universidad -->
+        <ion-item>
+            <ion-label color="primary" stacked>Nombre universidad</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.title"></ion-input>
+        </ion-item>
+        <!-- Pagina web -->
+        <ion-item>
+            <ion-label color="primary" stacked>Pagina web</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.website"></ion-input>
+        </ion-item>
+        <!-- Slogan -->
+        <ion-item>
+            <ion-label color="primary" stacked>Lema</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.motto"></ion-input>
+        </ion-item>
+
+        <!-- Selects para tipo de universidad y de carreras -->
+        <ion-item>
+            <ion-label>Tipo universidad</ion-label>
+            <ion-select [(ngModel)]='info_universidad_agregar.university_type_id' >
+                <ion-option text-wrap *ngFor="let p of university_types" [value]="p.id" >
+                    {{ p.title }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+
+
+        <ion-item >
+            <ion-label>Tipo de carreras</ion-label>
+            <ion-select [(ngModel)]='info_universidad_agregar.level' >
+                <ion-option text-wrap *ngFor="let p of university_levels" [value]="p.id" >
+                    {{ p.title }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+
+        <!-- Iniciales -->
+        <ion-item>
+            <ion-label color="primary" stacked>Iniciales</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.initials"></ion-input>
+        </ion-item>
+        <!-- Profesores -->
+        <ion-item>
+            <ion-label color="primary" stacked>Profesores</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.teachers"></ion-input>
+        </ion-item>
+        <!-- Grados -->
+        <ion-item>
+            <ion-label color="primary" stacked>Grados</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.degrees"></ion-input>
+        </ion-item>
+        <!-- Postgrados -->
+        <ion-item>
+            <ion-label color="primary" stacked>Postgrados</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.postgraduates"></ion-input>
+        </ion-item>
+        <!-- Doctorados -->
+        <ion-item>
+            <ion-label color="primary" stacked>Doctorados</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.doctorates"></ion-input>
+        </ion-item>
+        <!-- Alumnos -->
+        <ion-item>
+            <ion-label color="primary" stacked>Estudiantes</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.students"></ion-input>
+        </ion-item>
+        <!-- Descripción -->
+        <ion-item>
+            <ion-label color="primary" stacked>Descripcion</ion-label>
+            <ion-input [(ngModel)]="info_universidad_agregar.description"></ion-input>
+        </ion-item>
+        <!-- Gratiodad -->
+        <ion-item>
+            <ion-label> Gratuidad</ion-label>
+            <ion-toggle [(ngModel)]='info_universidad_agregar.freeness'></ion-toggle>
+        </ion-item>
+    </ion-list>
 </ion-content>
