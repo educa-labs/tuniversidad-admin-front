@@ -98,6 +98,7 @@ export class DetalleUniversidadPage {
             "description": this.info_universidad_seleccionada.description,
             "students": this.info_universidad_seleccionada.students,
             "degrees": this.info_universidad_seleccionada.degrees,
+            "visits": this.info_universidad_seleccionada.visits,
         };
 
         console.log('Data a enviar', data_a_enviar);
