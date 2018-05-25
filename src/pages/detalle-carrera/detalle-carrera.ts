@@ -71,6 +71,7 @@ export class DetalleCarreraPage {
             'last_cut': this.info_carrera['last_cut'],
             'description': this.info_carrera['description'],
             'degree_type': this.info_carrera['degree_type'],
+            'demre_id': this.info_carrera['demre_id'],
             weighing: {
                 'NEM': this.info_carrera.weighing['NEM'],
                 'ranking': this.info_carrera.weighing['ranking'],
