@@ -21,6 +21,7 @@ export class DetalleCarreraPage {
     areas: any;
     area_nueva: any;
     token: string;
+    degree_types: any;
 
     constructor(
         public navCtrl: NavController, 
@@ -30,6 +31,7 @@ export class DetalleCarreraPage {
         public alertCtrl: AlertController,
         public storage: Storage) {
             // Recibir el id de la carrera seleccionada 
+            this.degree_types = [{id:1, title:"Profesional"},{id:2,title:"Técnica"}];
             this.id_carrera_seleccionada = navParams.get('id_carrera');
             this.storage.get("user").then((data) => {
                 this.token = data.token
@@ -68,6 +70,7 @@ export class DetalleCarreraPage {
             'income': this.info_carrera['income'],
             'last_cut': this.info_carrera['last_cut'],
             'description': this.info_carrera['description'],
+            'degree_type': this.info_carrera['degree_type'],
             weighing: {
                 'NEM': this.info_carrera.weighing['NEM'],
                 'ranking': this.info_carrera.weighing['ranking'],

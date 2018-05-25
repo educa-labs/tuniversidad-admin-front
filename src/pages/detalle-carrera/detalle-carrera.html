@@ -30,6 +30,17 @@
                     </ion-option>
                 </ion-select>
             </ion-item>
+
+            <!-- Select con tipos de titulo -->
+            <ion-item *ngIf='degree_types'>
+                <ion-label>Tipo de carrera</ion-label>
+                <ion-select [(ngModel)]='info_carrera.degree_type' >
+                    <ion-option text-wrap *ngFor="let p of degree_types" [value]="p.id" >
+                        {{ p.title }}
+                    </ion-option>
+                </ion-select>
+            </ion-item>
+
             <!-- Input para cambiar la descripcion de la carrera -->
             <ion-item>
                 <ion-label floating>Descripción</ion-label>

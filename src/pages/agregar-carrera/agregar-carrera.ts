@@ -20,6 +20,7 @@ export class AgregarCarreraPage {
     campuses_universidad: any;
     areas:any;
     token:string;
+    degree_types: any;
 
     constructor(
         public navCtrl: NavController, 
@@ -28,6 +29,7 @@ export class AgregarCarreraPage {
         public provider_areas: DataAreasProvider,
         public provider_carreras: DataCarrerasProvider,
         public storage: Storage) {
+            this.degree_types = [{id:1, title:"Profesional"},{id:2,title:"Técnica"}];
             this.storage.get("user").then((data) => {
                 this.token = data.token
                 // Recibir las areas 
