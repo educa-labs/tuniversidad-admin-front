@@ -41,7 +41,7 @@ export class AgregarUniversidadPage {
 
 }
 
-  agregar_universidad() {
+  async agregar_universidad() {
     /* crear_universidad: funcion para crear la informacion de una de 
     lcas universidades. Lo que hace es ordenar la data que se enviará y llama 
     a la funcion del provider */
@@ -62,20 +62,19 @@ export class AgregarUniversidadPage {
         "level": this.info_universidad_agregar['level']
     };
 
-    const myReader:FileReader = new FileReader();
-
-    myReader.onloadend = (e) => {
-      data_a_enviar['profile'] = myReader.result;
-      data_a_enviar['profile_extension'] = this.profileToUpload.name.split('.').pop()
-      console.log('Data a enviar', data_a_enviar);
-      this.provider_universidades.crear_universidad(data_a_enviar, this.token)
-          .then(data => {
-              console.log('Respuesta al crear', data);
-          })
+    if (this.profileToUpload) {
+      const profileReader:FileReader = new FileReader();
+      
+      profileReader.onloadend = (e) => {
+        data_a_enviar['profile'] = profileReader.result.split('base64,').pop();
+        data_a_enviar['profile_extension'] = this.profileToUpload.name.split('.').pop()
+      }
+      await profileReader.readAsDataURL(this.profileToUpload);
     }
-    myReader.readAsDataURL(this.profileToUpload);
-
-
-
+    console.log('Data a enviar', data_a_enviar);
+    this.provider_universidades.crear_universidad(data_a_enviar, this.token)
+        .then(data => {
+            console.log('Respuesta al crear', data);
+        })
   };
 }
