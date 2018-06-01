@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar color='primary'>
+        <ion-title>Noticias</ion-title>
+        <!-- <ion-buttons end>
+            <button ion-button icon-only (click)='agregar_universidad()'>
+                <ion-icon name="add" ></ion-icon>
+            </button>
+        </ion-buttons> -->
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <!-- Usar ion-item para que se vea la linea separatoria -->
+    <ion-item>
+        <!-- Crear una "tabla" grid --> 
+        <ion-grid>
+            <ion-row>
+                <!-- Nombre de la universidad -->
+                <ion-col col-9>
+                    <p class="primer_elemento">Titulo</p>
+                </ion-col>
+                <!-- Sigla de la universidad -->
+                <ion-col col-3>
+                    <p class="fila">Fecha</p>
+                </ion-col>
+                <!-- Visitas de la universidad -->
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+
+    <ion-list>
+        <!-- Elemento: repetir las universidades -->
+        <ion-item *ngFor="let p of news" (click)='goToNew(p["id"])'>
+            <ion-grid>
+                <ion-row>
+                    <!-- Nombre de la universidad -->
+                    <ion-col col-6 class='truncado'>
+                        <p class="primer_elemento">{{ p["title"] }}</p>
+                    </ion-col>
+                    <!-- Sigla de la universidad -->
+                    <ion-col col-3 class='truncado'>
+                        <p class="fila">{{ p["created_at"] }}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

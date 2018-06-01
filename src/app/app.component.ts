@@ -6,7 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
 import { UniversidadesPage } from '../pages/universidades/universidades';
- 
+import { NewsListPage} from '../pages/news-list/news-list'
+
 @Component({
     templateUrl: 'app.html'
 })
@@ -28,7 +29,8 @@ export class MyApp {
 
             // Configurar las paginas del menu
             this.paginas = [
-                { titulo: 'Universidades', component: UniversidadesPage, icon: 'paper' }
+                { titulo: 'Universidades', component: UniversidadesPage, icon: 'paper' }, 
+                {titulo:"Noticias", component:NewsListPage, icon: "list"}
             ]
             // Cuando está lista la plataforma
             platform.ready().then(() => {

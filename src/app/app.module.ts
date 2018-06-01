@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { UsuariosPage } from '../pages/usuarios/usuarios';
 import { LoginPage } from '../pages/login/login';
 import { UniversidadesPage } from '../pages/universidades/universidades';
+import { NewsListPage } from '../pages/news-list/news-list'
 import { DetalleUniversidadPage } from '../pages/detalle-universidad/detalle-universidad';
 import { AgregarUniversidadPage } from '../pages/agregar-universidad/agregar-universidad';
 import { DetalleCarreraPage } from '../pages/detalle-carrera/detalle-carrera';
@@ -24,6 +25,7 @@ import { DataUniversidadesProvider } from '../providers/data-universidades/data-
 import { DataCarrerasProvider } from '../providers/data-carreras/data-carreras';
 import { DataAreasProvider } from '../providers/data-areas/data-areas';
 import { CampusProvider } from '../providers/campus/campus';
+import { NewsProvider } from '../providers/news/news';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,8 @@ import { CampusProvider } from '../providers/campus/campus';
         AgregarCarreraPage,
         AgregarUniversidadPage,
         DetalleCampusPage,
-        AgregarCampusPage
+        AgregarCampusPage,
+        NewsListPage
     ],
     imports: [
         BrowserModule,
@@ -57,7 +60,8 @@ import { CampusProvider } from '../providers/campus/campus';
         AgregarCarreraPage,
         AgregarUniversidadPage,
         DetalleCampusPage,
-        AgregarCampusPage
+        AgregarCampusPage,
+        NewsListPage
     ],
     providers: [
         StatusBar,
@@ -68,7 +72,8 @@ import { CampusProvider } from '../providers/campus/campus';
         DataUniversidadesProvider,
         DataCarrerasProvider,
         DataAreasProvider,
-        CampusProvider
+        CampusProvider,
+        NewsProvider
     ]
 })
 export class AppModule {}
