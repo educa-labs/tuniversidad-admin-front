@@ -12,7 +12,7 @@ export class NewsCreatePage {
 
   newData: object;
   token:  string;
-  pictureToUpload: File = null;
+  imageToUpload: File = null;
 
   constructor(
     public navCtrl: NavController,
@@ -26,17 +26,39 @@ export class NewsCreatePage {
       })
   }
 
-  create(){
+  handleImageInput(files: FileList) {
+    this.imageToUpload = files.item(0);
+  }
+
+  async create(){
     const payload = { 
       new: this.newData
     }
+
+    if (this.imageToUpload) {
+      const data = await this.readUploadedFileAsData(this.imageToUpload)
+      const result =JSON.stringify(data).slice(1,-1)
+      payload['picture'] = result.split('base64,').pop();
+      payload['extension'] = this.imageToUpload.name.split('.').pop()
+    }
+
     console.log("payload", payload)
     this.newProvider.createNew(payload, this.token)
         .then(data => {
           console.log('Respuesta al crear', data);
     })
-
-
   }
+
+  readUploadedFileAsData = (file) => {
+    const reader:FileReader = new FileReader();
+
+    return new Promise((resolve,reject) => {
+      reader.onloadend = (e) => {
+        resolve(reader.result)
+      }
+      reader.readAsDataURL(file);    
+      }
+    )
+  };
 
 }

@@ -9,11 +9,19 @@ import { NewsCreatePage} from '../../pages/news-create/news-create'
 })
 export class NewsListPage {
 
+  news: any;
+
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public newsProvider: NewsProvider) {
+      this.loadNews()
   }
 
+
+  async loadNews() {
+    this.news = await this.newsProvider.getNews()
+  }
 
   addNew(){
     this.navCtrl.push(NewsCreatePage)

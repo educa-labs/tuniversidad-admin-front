@@ -18,20 +18,31 @@
 <ion-content>
   <!-- Espacio con los inputs para actualizar la universidad -->
   <ion-list>
-    <!-- Nombre de la universidad -->
+    
     <ion-item>
         <ion-label color="primary" stacked>Titulo</ion-label>
         <ion-input [(ngModel)]="newData.title"></ion-input>
     </ion-item>
-    <!-- Pagina web -->
+    
     <ion-item>
         <ion-label color="primary" stacked>Bajada</ion-label>
         <ion-textarea [(ngModel)]="newData.lowering"></ion-textarea>
     </ion-item>
-    <!-- Slogan -->
+    
     <ion-item>
         <ion-label color="primary" stacked>Cuerpo</ion-label>
         <ion-input [(ngModel)]="newData.body"></ion-input>
     </ion-item>
+
+    <ion-item>
+        <ion-label color="primary" stacked>Autor</ion-label>
+        <ion-input [(ngModel)]="newData.author"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label for="file"> Imagen </ion-label>
+        <ion-input type="file" id="file" (change)="handleImageInput($event.target.files)" ></ion-input>
+    </ion-item>
+
   </ion-list>
 </ion-content>  
