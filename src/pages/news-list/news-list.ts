@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NewsProvider } from '../../providers/news/news'
-import { NewsCreatePage} from '../../pages/news-create/news-create'
+import { NewsCreatePage } from '../../pages/news-create/news-create'
+import { NewsShowPage} from '../../pages/news-show/news-show'
 
 @Component({
   selector: 'page-news-list',
@@ -25,6 +26,10 @@ export class NewsListPage {
 
   addNew(){
     this.navCtrl.push(NewsCreatePage)
+  }
+
+  showNew(newId) {
+    this.navCtrl.push(NewsShowPage, { newId })
   }
 
 }

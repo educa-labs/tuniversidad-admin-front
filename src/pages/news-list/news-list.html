@@ -30,7 +30,7 @@
 
     <ion-list>
         <!-- Elemento: repetir las universidades -->
-        <ion-item *ngFor="let p of news" (click)='goToNew(p["id"])'>
+        <ion-item *ngFor="let p of news" (click)='showNew(p["id"])'>
             <ion-grid>
                 <ion-row>
                     <!-- Nombre de la universidad -->

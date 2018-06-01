@@ -19,6 +19,7 @@ import { AgregarCarreraPage } from '../pages/agregar-carrera/agregar-carrera';
 import { DetalleCampusPage} from  '../pages/detalle-campus/detalle-campus';
 import { AgregarCampusPage} from '../pages/agregar-campus/agregar-campus'
 import { NewsCreatePage} from '../pages/news-create/news-create'
+import { NewsShowPage } from '../pages/news-show/news-show'
 // importar providers
 import { AuthProvider } from '../providers/auth/auth';
 import { DataUsuariosProvider } from '../providers/data-usuarios/data-usuarios';
@@ -42,7 +43,8 @@ import { NewsProvider } from '../providers/news/news';
         DetalleCampusPage,
         AgregarCampusPage,
         NewsListPage,
-        NewsCreatePage
+        NewsCreatePage,
+        NewsShowPage
     ],
     imports: [
         BrowserModule,
@@ -64,7 +66,8 @@ import { NewsProvider } from '../providers/news/news';
         DetalleCampusPage,
         AgregarCampusPage,
         NewsListPage,
-        NewsCreatePage
+        NewsCreatePage,
+        NewsShowPage
     ],
     providers: [
         StatusBar,
