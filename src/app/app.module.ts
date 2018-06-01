@@ -18,6 +18,7 @@ import { DetalleCarreraPage } from '../pages/detalle-carrera/detalle-carrera';
 import { AgregarCarreraPage } from '../pages/agregar-carrera/agregar-carrera';
 import { DetalleCampusPage} from  '../pages/detalle-campus/detalle-campus';
 import { AgregarCampusPage} from '../pages/agregar-campus/agregar-campus'
+import { NewsCreatePage} from '../pages/news-create/news-create'
 // importar providers
 import { AuthProvider } from '../providers/auth/auth';
 import { DataUsuariosProvider } from '../providers/data-usuarios/data-usuarios';
@@ -40,7 +41,8 @@ import { NewsProvider } from '../providers/news/news';
         AgregarUniversidadPage,
         DetalleCampusPage,
         AgregarCampusPage,
-        NewsListPage
+        NewsListPage,
+        NewsCreatePage
     ],
     imports: [
         BrowserModule,
@@ -61,7 +63,8 @@ import { NewsProvider } from '../providers/news/news';
         AgregarUniversidadPage,
         DetalleCampusPage,
         AgregarCampusPage,
-        NewsListPage
+        NewsListPage,
+        NewsCreatePage
     ],
     providers: [
         StatusBar,
@@ -73,7 +76,7 @@ import { NewsProvider } from '../providers/news/news';
         DataCarrerasProvider,
         DataAreasProvider,
         CampusProvider,
-        NewsProvider
+        NewsProvider,
     ]
 })
 export class AppModule {}
