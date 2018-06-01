@@ -30,6 +30,8 @@ export class DetalleUniversidadPage {
     //tipos de universidad
     university_types: any;
     university_levels: any;
+    profileToUpload: File = null;
+    coverToUpload: File = null;
 
     token: string;
 
@@ -91,7 +93,16 @@ export class DetalleUniversidadPage {
         this.navCtrl.push(DetalleCampusPage, {id_campus: id_campus})
     }
 
-    actualizar_universidad() {
+
+    handleProfileInput(files: FileList) {
+        this.profileToUpload = files.item(0);
+    }
+    
+    handleCoverInput(files: FileList) {
+        this.coverToUpload = files.item(0);
+    }
+
+    async actualizar_universidad() {
         /* actualizar_universidad: funcion para actualizar la informacion de una de 
         lcas universidades. Lo que hace es ordenar la data que se enviará y llama 
         a la funcion del provider */
@@ -113,12 +124,40 @@ export class DetalleUniversidadPage {
             "level": this.info_universidad_seleccionada.level
         };
 
+
+        if (this.profileToUpload) {
+            const data = await this.readUploadedFileAsData(this.profileToUpload)
+            const result =JSON.stringify(data).slice(1,-1)
+            data_a_enviar['profile'] = result.split('base64,').pop();
+            data_a_enviar['profile_extension'] = this.profileToUpload.name.split('.').pop()
+          }
+          if (this.coverToUpload) {
+            const data = await this.readUploadedFileAsData(this.coverToUpload)
+            const result =JSON.stringify(data).slice(1,-1)
+            data_a_enviar['cover'] = result.split('base64,').pop();
+            data_a_enviar['cover_extension'] = this.coverToUpload.name.split('.').pop()
+          }
+
+
         console.log('Data a enviar', data_a_enviar);
         this.provider_universidades.actualizar_universidad(data_a_enviar, this.id_universidad_seleccionada, this.token)
             .then(data => {
                 console.log('Respuesta al actualizar', data);
             })
     };
+
+
+    readUploadedFileAsData = (file) => {
+        const reader:FileReader = new FileReader();
+    
+        return new Promise((resolve,reject) => {
+          reader.onloadend = (e) => {
+            resolve(reader.result)
+          }
+          reader.readAsDataURL(file);    
+          }
+        )
+      };
 
     recibir_campuses(id_universidad) {
         /* recibir_campuses: funcion para recibir todos los campuses de una universidad,

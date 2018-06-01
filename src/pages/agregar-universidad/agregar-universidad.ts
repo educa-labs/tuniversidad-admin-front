@@ -39,13 +39,9 @@ export class AgregarUniversidadPage {
 
   handleProfileInput(files: FileList) {
     this.profileToUpload = files.item(0);
-    console.log(this.profileToUpload.name.split('.').pop())
-
   }
   handleCoverInput(files: FileList) {
     this.coverToUpload = files.item(0);
-    console.log(this.coverToUpload.name.split('.').pop())
-
   }
 
   async agregar_universidad() {
@@ -72,14 +68,12 @@ export class AgregarUniversidadPage {
     if (this.profileToUpload) {
       const data = await this.readUploadedFileAsData(this.profileToUpload)
       const result =JSON.stringify(data).slice(1,-1)
-      console.log(result)
       data_a_enviar['profile'] = result.split('base64,').pop();
       data_a_enviar['profile_extension'] = this.profileToUpload.name.split('.').pop()
     }
     if (this.coverToUpload) {
       const data = await this.readUploadedFileAsData(this.coverToUpload)
       const result =JSON.stringify(data).slice(1,-1)
-      console.log(result)
       data_a_enviar['cover'] = result.split('base64,').pop();
       data_a_enviar['cover_extension'] = this.coverToUpload.name.split('.').pop()
     }
