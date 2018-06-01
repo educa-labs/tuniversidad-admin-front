@@ -88,9 +88,15 @@
             <ion-label> Gratuidad</ion-label>
             <ion-toggle [(ngModel)]='info_universidad_agregar.freeness'></ion-toggle>
         </ion-item>
-        
-        <label for="file"> Profile Picture</label>
-        <input type="file" id="file" (change)="handleProfileInput($event.target.files)" >
+        <ion-item>
+            <ion-label for="file"> Profile Picture</ion-label>
+            <ion-input type="file" id="file" (change)="handleProfileInput($event.target.files)" ></ion-input>
+        </ion-item>
 
+         <ion-item>
+            <ion-label for="file"> Cover Picture</ion-label>
+            <ion-input type="file" id="file" (change)="handleCoverInput($event.target.files)" ></ion-input>
+        </ion-item>
+        
     </ion-list>
 </ion-content>

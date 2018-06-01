@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController, NavParams } from 'ionic-angular';
 import { DataUniversidadesProvider } from '../../providers/data-universidades/data-universidades'
+import { resolve, reject } from 'q';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class AgregarUniversidadPage {
   university_types: any;
   university_levels: any;
   profileToUpload: File = null;
+  coverToUpload: File = null;
 
 
   constructor(
@@ -39,7 +41,12 @@ export class AgregarUniversidadPage {
     this.profileToUpload = files.item(0);
     console.log(this.profileToUpload.name.split('.').pop())
 
-}
+  }
+  handleCoverInput(files: FileList) {
+    this.coverToUpload = files.item(0);
+    console.log(this.coverToUpload.name.split('.').pop())
+
+  }
 
   async agregar_universidad() {
     /* crear_universidad: funcion para crear la informacion de una de 
@@ -63,18 +70,37 @@ export class AgregarUniversidadPage {
     };
 
     if (this.profileToUpload) {
-      const profileReader:FileReader = new FileReader();
-      
-      profileReader.onloadend = (e) => {
-        data_a_enviar['profile'] = profileReader.result.split('base64,').pop();
-        data_a_enviar['profile_extension'] = this.profileToUpload.name.split('.').pop()
-      }
-      await profileReader.readAsDataURL(this.profileToUpload);
+      const data = await this.readUploadedFileAsData(this.profileToUpload)
+      const result =JSON.stringify(data).slice(1,-1)
+      console.log(result)
+      data_a_enviar['profile'] = result.split('base64,').pop();
+      data_a_enviar['profile_extension'] = this.profileToUpload.name.split('.').pop()
     }
+    if (this.coverToUpload) {
+      const data = await this.readUploadedFileAsData(this.coverToUpload)
+      const result =JSON.stringify(data).slice(1,-1)
+      console.log(result)
+      data_a_enviar['cover'] = result.split('base64,').pop();
+      data_a_enviar['cover_extension'] = this.coverToUpload.name.split('.').pop()
+    }
+    
     console.log('Data a enviar', data_a_enviar);
     this.provider_universidades.crear_universidad(data_a_enviar, this.token)
         .then(data => {
             console.log('Respuesta al crear', data);
         })
+  };
+
+
+  readUploadedFileAsData = (file) => {
+    const reader:FileReader = new FileReader();
+
+    return new Promise((resolve,reject) => {
+      reader.onloadend = (e) => {
+        resolve(reader.result)
+      }
+      reader.readAsDataURL(file);    
+      }
+    )
   };
 }
