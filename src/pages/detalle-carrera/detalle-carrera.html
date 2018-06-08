@@ -21,6 +21,11 @@
         <h2 padding>Área de la carrera: {{ info_carrera.area_title }}</h2>
         <!-- Lista con todos los inputs para cambiar la info de la carrera  -->
         <ion-list>
+            <!-- Cambiar el nombre de la carrera -->
+            <ion-item>
+                <ion-label floating>Nombre de la carrera</ion-label>
+                <ion-input type="text" [(ngModel)]='info_carrera.title' [value]="info_carrera.title"></ion-input>
+            </ion-item>
             <!-- Select con todas las áreas -->
             <ion-item *ngIf='areas'>
                 <ion-label>Cambiar area</ion-label>
