@@ -1,18 +1,42 @@
-<!--
-  Generated template for the NewsShowPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>news-show</ion-title>
+  <ion-navbar color='primary'>
+    <ion-title>Noticia</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)='update()'>
+          <ion-icon name="checkmark" ></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
+<!-- Espacio con los input crear la noticia -->
+<ion-list>
+  
+  <ion-item>
+      <ion-label color="primary" stacked>Titulo</ion-label>
+      <ion-input [(ngModel)]="newData.title" (value)="newData.title"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+      <ion-label color="primary" stacked>Bajada</ion-label>
+      <ion-textarea [(ngModel)]="newData.lowering" (value)="newData.lowering"></ion-textarea>
+  </ion-item>
+  
+  <ion-item>
+      <ion-label color="primary" stacked>Cuerpo</ion-label>
+      <ion-input [(ngModel)]="newData.body" (value)="newData.body"></ion-input>
+  </ion-item>
 
-<ion-content padding>
+  <ion-item>
+      <ion-label color="primary" stacked>Autor</ion-label>
+      <ion-input [(ngModel)]="newData.author " (value)="newData.author"></ion-input>
+  </ion-item>
 
-</ion-content>
+  <ion-item>
+      <ion-label for="file"> Imagen </ion-label>
+      <ion-input type="file" id="file" (change)="handleImageInput($event.target.files)" ></ion-input>
+  </ion-item>
+
+</ion-list>
+</ion-content>  
