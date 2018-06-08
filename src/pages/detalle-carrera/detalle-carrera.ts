@@ -87,6 +87,7 @@ export class DetalleCarreraPage {
         this.provider_carreras.actualizar_carrera(data_a_enviar, this.id_carrera_seleccionada, this.token)
             .then(data => {
                 console.log('Respuesta al actualizar', data);
+                this.navCtrl.pop();
             })
     };
 
