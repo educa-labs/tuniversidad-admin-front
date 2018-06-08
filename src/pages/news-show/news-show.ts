@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { NewsProvider } from '../../providers/news/news'
-
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-news-show',
@@ -18,7 +18,8 @@ export class NewsShowPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public storage: Storage,
-    public newProvider: NewsProvider) {
+    public newProvider: NewsProvider,
+    public alertCtrl: AlertController) {
       this.newData = {}
       // Extraemos token del usuario
       this.storage.get("user").then((data) => {
@@ -33,6 +34,39 @@ export class NewsShowPage {
       this.newData = data
       console.log(this.newData)
     })
+  }
+
+
+  destroyNew(){
+    let confirm = this.alertCtrl.create({
+      title: 'Confirmar eliminar carrera',
+      message: '¿Seguro quieres borras esta carrera? No hay vuelta atrás...',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Se apretó cancelar');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Se apretó para que se borrara una carrera');
+            // Llamar a la funcion del provider 
+            this.newProvider.deleteNew(this.navParams.get('newId'), this.token)
+                .then(data => {
+                  if (data['status'] == 'success') {
+                    this.navCtrl.pop();
+                  } else {
+                    alert('Ocurrió un error intentando borrar la carrera')
+                  }
+                })
+          }
+        }
+      ]
+  });
+  // Mostrar alert de confirmacion
+  confirm.present();
   }
 
 

@@ -67,6 +67,29 @@ export class NewsProvider {
       })
     }
 
+  deleteNew(newId,token) {
+    let loader = this.loading.create({ content: 'Eliminando carrera...' });
+    loader.present();
+
+    return new Promise(resolve => {
+      // Headers para hacer la consulta
+      let headers = new Headers();
+      headers.append('Authorization', token);
+      headers.append('Content-Type', 'application/json');
+
+      this.http.delete(this.api + '/news/' + newId, { headers: headers })
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+          console.log('Data recibida al borrar una noticia', data);
+          loader.dismiss();
+      }, error => {
+          alert('Ocurrió un error al intentar borrar una noticia');
+          console.log('Ocurrió un error al intentar borrar una noticia', error);
+          loader.dismiss();
+      });
+    });  
+  }
   
   updateNew(newId,newData,token) {
     let loader = this.loading.create({ content: 'Actualizando noticia...' });
